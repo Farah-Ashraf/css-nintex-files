@@ -1,29 +1,31 @@
 /* ============================================================
    ICT MISR — Expense Claim Form
    Nintex Automation (K2) custom style profile
+   Theme: Clean Corporate (navy / indigo)
 
    SCOPING RULE: every selector is prefixed with `.form` so it
    cannot leak into the K2 Designer UI. Do not add bare selectors.
    ============================================================ */
 
-@import url('https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
 
 :root{
-  --navy-900:#0B1E3D;
-  --navy-800:#122A50;
-  --blue-600:#2F5FDB;
-  --blue-500:#3F72E8;
-  --blue-100:#EAF0FE;
-  --blue-50:#F4F7FE;
-  --slate-600:#4B5768;
-  --slate-400:#8593A8;
-  --slate-200:#E1E6EF;
-  --slate-100:#EEF1F6;
+  --navy-950:#0A1730;
+  --navy-900:#0E2148;
+  --navy-800:#16305F;
+  --indigo-600:#2E4FCC;
+  --indigo-500:#4165E0;
+  --indigo-100:#E6EBFC;
+  --indigo-50:#F2F5FE;
+  --slate-600:#4E5A6E;
+  --slate-400:#8A96AA;
+  --slate-200:#DEE3ED;
+  --slate-100:#EFF2F8;
   --white:#FFFFFF;
-  --success:#1E9E6B;
-  --amber:#B9791A;
-  --danger:#D14B4B;
-  --shadow-card:0 1px 2px rgba(11,30,61,.04), 0 8px 24px -12px rgba(11,30,61,.10);
+  --success:#188A5A;
+  --amber:#B07A1E;
+  --danger:#C74747;
+  --shadow-card:0 1px 2px rgba(10,23,48,.05), 0 10px 28px -14px rgba(10,23,48,.14);
 }
 
 /* ============================================================
@@ -33,11 +35,11 @@
 .form .view, .form .panel, .form .grid,
 .form input, .form textarea, .form select,
 .form span, .form div, .form td, .form a{
-  font-family:'Inter',-apple-system,"Segoe UI",Roboto,sans-serif !important;
+  font-family:'Public Sans',-apple-system,"Segoe UI",Roboto,sans-serif !important;
 }
 .form .panel-header-text span,
 .form .grid-header-text span{
-  font-family:'Space Grotesk',sans-serif !important;
+  font-family:'Manrope',sans-serif !important;
 }
 
 /* ============================================================
@@ -96,7 +98,7 @@ body{
 .form .view .grid{
   background:var(--white) !important;
   border:1px solid var(--slate-200) !important;
-  border-radius:12px !important;
+  border-radius:14px !important;
   box-shadow:var(--shadow-card) !important;
   overflow:hidden !important;
 }
@@ -108,7 +110,7 @@ body{
 }
 
 /* ============================================================
-   6. CARD HEADER — no grey bar
+   6. CARD HEADER — accent-tinted bar instead of grey
    ============================================================ */
 .form .panel-header, .form .grid-header,
 .form .panel-header-l, .form .panel-header-c, .form .panel-header-r,
@@ -120,13 +122,15 @@ body{
 .form .panel-header, .form .grid-header{
   border:none !important;
   border-bottom:1px solid var(--slate-100) !important;
-  padding:18px 24px !important;
+  border-left:3px solid var(--indigo-600) !important;
+  padding:18px 22px !important;
 }
 .form .panel-header-text span,
 .form .grid-header-text span{
-  color:var(--navy-900) !important;
+  color:var(--navy-950) !important;
   font-size:16px !important;
-  font-weight:600 !important;
+  font-weight:700 !important;
+  letter-spacing:-.01em !important;
 }
 .form a.collapse-vertical{ display:none !important; }
 
@@ -154,14 +158,16 @@ body{
 .form .line-break.clearFloatFix{ display:none !important; }
 
 .form span.SourceCode-Forms-Controls-Web-Label{
-  font-size:13.5px !important;
+  font-size:13px !important;
   font-weight:600 !important;
   color:var(--slate-600) !important;
   line-height:1.4 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.03em !important;
 }
 .form span.SourceCode-Forms-Controls-Web-DataLabel{
-  font-size:14px !important;
-  color:var(--navy-900) !important;
+  font-size:14.5px !important;
+  color:var(--navy-950) !important;
   background:transparent !important;
 }
 
@@ -181,12 +187,13 @@ body{
 .form .input-control.dropdown-box,
 .form .input-control.calendar-control{
   border:1px solid var(--slate-200) !important;
-  border-radius:8px !important;
+  border-radius:9px !important;
   background:var(--white) !important;
   box-shadow:none !important;
-  color:var(--navy-900) !important;
+  color:var(--navy-950) !important;
   font-size:13.5px !important;
   box-sizing:border-box !important;
+  transition:border-color .12s ease, box-shadow .12s ease !important;
 }
 .form input.SourceCode-Forms-Controls-Web-TextBox{
   padding:10px 12px !important;
@@ -212,8 +219,8 @@ body{
   padding-left:12px !important;
 }
 .form input:focus, .form textarea:focus{
-  border-color:var(--blue-500) !important;
-  box-shadow:0 0 0 3px var(--blue-100) !important;
+  border-color:var(--indigo-500) !important;
+  box-shadow:0 0 0 3px var(--indigo-100) !important;
   outline:none !important;
 }
 
@@ -226,7 +233,7 @@ body{
   background:transparent !important;
   background-color:transparent !important;
   border-color:var(--slate-200) !important;
-  color:var(--navy-900) !important;
+  color:var(--navy-950) !important;
 }
 .form .input-control.text-input.read-only{
   background-color:var(--slate-100) !important;
@@ -240,8 +247,8 @@ body{
   border:none !important;
 }
 .form a.toolbar-button .button-text{
-  color:var(--blue-600) !important;
-  font-weight:600 !important;
+  color:var(--indigo-600) !important;
+  font-weight:700 !important;
   font-size:13px !important;
 }
 
@@ -266,11 +273,12 @@ body{
 .form .grid-column-headers,
 .form .grid-body-content-wrapper{ border:none !important; }
 .form .grid-column-header-table{
-  background:var(--slate-100) !important;
+  background:var(--navy-950) !important;
   border-bottom:1px solid var(--slate-200) !important;
 }
 .form .grid-column-header-text{
-  color:var(--slate-400) !important;
+  color:var(--slate-100) !important;
+  opacity:.85 !important;
   font-size:10.5px !important;
   font-weight:700 !important;
   text-transform:uppercase !important;
@@ -287,7 +295,7 @@ body{
   overflow:hidden !important;
 }
 .form .zebra-stripes tr:nth-child(even) td{
-  background:transparent !important;
+  background:var(--indigo-50) !important;
 }
 .form tr.edit-template-row td,
 .form .grid-content-table tr.selected td{
@@ -329,8 +337,8 @@ body{
 }
 
 .form a.action-row{
-  color:var(--blue-600) !important;
-  font-weight:600 !important;
+  color:var(--indigo-600) !important;
+  font-weight:700 !important;
   font-size:13px !important;
 }
 
@@ -346,14 +354,15 @@ body{
   letter-spacing:.06em !important;
 }
 .form span[name="Sum USD Amount"]{
-  font-family:'IBM Plex Mono',monospace !important;
+  font-family:'JetBrains Mono',monospace !important;
   font-size:20px !important;
-  color:var(--navy-900) !important;
+  font-weight:600 !important;
+  color:var(--navy-950) !important;
 }
 .form span[name="Amount Data Label"],
 .form span[name="USD Amount Data Label"],
 .form span[name="Total Amount Data Label"]{
-  font-family:'IBM Plex Mono',monospace !important;
+  font-family:'JetBrains Mono',monospace !important;
   color:var(--navy-800) !important;
 }
 
@@ -368,9 +377,9 @@ body{
 .form .grid-content-cell .file-label{ height:auto !important; }
 .form .grid-content-cell .file-tn-cell{ display:none !important; }
 .form .file-wrapper .file-watermark{
-  color:var(--blue-600) !important;
-  background:var(--blue-50) !important;
-  border:1px dashed var(--blue-500) !important;
+  color:var(--indigo-600) !important;
+  background:var(--indigo-50) !important;
+  border:1px dashed var(--indigo-500) !important;
   border-radius:999px !important;
   padding:5px 8px !important;
   font-size:10.5px !important;
@@ -386,10 +395,10 @@ body{
    ============================================================ */
 .form a.SourceCode-Forms-Controls-Web-Button{
   border:none !important;
-  border-radius:8px !important;
+  border-radius:9px !important;
   padding:11px 22px !important;
   font-size:13.5px !important;
-  font-weight:600 !important;
+  font-weight:700 !important;
   text-decoration:none !important;
   display:inline-block !important;
   color:#FFFFFF !important;
@@ -400,19 +409,19 @@ body{
 
 .form a[name="Button Submit"],
 .form a[name="Button Finance Processing"]{
-  background-color:var(--blue-600) !important;
-  box-shadow:0 6px 16px -6px rgba(47,95,219,.55) !important;
+  background-color:var(--indigo-600) !important;
+  box-shadow:0 6px 16px -6px rgba(46,79,204,.55) !important;
 }
 .form a[name="Button Submit"]:hover,
 .form a[name="Button Finance Processing"]:hover{
-  background-color:var(--navy-900) !important;
+  background-color:var(--navy-950) !important;
 }
 
 .form a[name="Approve Button"]{
   background-color:var(--success) !important;
 }
 .form a[name="Approve Button"]:hover{
-  background-color:#177A52 !important;
+  background-color:#146F49 !important;
 }
 
 .form a[name="Reject Button"],
@@ -423,7 +432,7 @@ body{
 .form a[name="Reject Button"]:hover,
 .form a[name="Button Cancel"]:hover,
 .form a[name="Cancel Claim Button"]:hover{
-  background-color:#B03A3A !important;
+  background-color:#A83838 !important;
 }
 
 .form a[name="Rework Button"],
@@ -432,7 +441,7 @@ body{
 }
 .form a[name="Rework Button"]:hover,
 .form a[name="Resubmit Claim Button"]:hover{
-  background-color:#96610F !important;
+  background-color:#8C6218 !important;
 }
 
 /* ============================================================
@@ -451,7 +460,7 @@ body{
   gap:0 !important;
 }
 
-/* logo — override the inline width:20% */
+/* logo — kept top-left, override the inline width:20% */
 .form img[name="Nav Logo"]{
   width:auto !important;
   max-height:52px !important;
@@ -466,11 +475,13 @@ body{
   font-size:12px !important;
   color:var(--slate-400) !important;
   line-height:1.2 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.04em !important;
 }
 .form span[name="Refernce ID"]{
   display:block !important;
   text-align:right !important;
-  font-family:'IBM Plex Mono',monospace !important;
+  font-family:'JetBrains Mono',monospace !important;
   font-size:14px !important;
   font-weight:600 !important;
   color:var(--navy-800) !important;
