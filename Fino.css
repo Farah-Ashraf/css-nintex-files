@@ -1,0 +1,1709 @@
+/* ============================================================
+   ICT MISR — EXPENSE CLAIM
+   PREMIUM LIGHT ENTERPRISE THEME
+   K2 / Nintex SmartForms
+
+   Scoped to .form
+   ============================================================ */
+
+
+/* ============================================================
+   0. VARIABLES
+   ============================================================ */
+
+.form{
+  --bg-page:#F4F7FB;
+
+  --surface-card:#FFFFFF;
+  --surface-card-soft:#F8FAFD;
+  --surface-input:#FFFFFF;
+  --surface-input-hover:#F9FBFF;
+
+  --primary:#3157C8;
+  --primary-hover:#2648B0;
+  --primary-soft:#EEF3FF;
+  --primary-border:#C9D5F5;
+
+  --text-primary:#172033;
+  --text-secondary:#475467;
+  --text-muted:#667085;
+  --text-label:#344054;
+
+  --border:#D9E0EC;
+  --border-hover:#B9C6DD;
+  --border-focus:#6B8AF7;
+
+  --success:#159570;
+  --success-hover:#117C5D;
+
+  --danger:#D64545;
+  --danger-hover:#B93838;
+
+  --warning:#C9891E;
+  --warning-hover:#AD7417;
+
+  --shadow-card:
+    0 1px 2px rgba(16,24,40,.04),
+    0 8px 24px rgba(16,24,40,.06);
+
+  --shadow-card-hover:
+    0 2px 4px rgba(16,24,40,.05),
+    0 14px 32px rgba(16,24,40,.08);
+
+  --shadow-input:
+    0 1px 2px rgba(16,24,40,.03);
+
+  --shadow-focus:
+    0 0 0 4px rgba(49,87,200,.10);
+
+  --radius-card:14px;
+  --radius-input:8px;
+  --radius-button:8px;
+
+  --transition-fast:
+    .16s cubic-bezier(.4,0,.2,1);
+
+  --transition:
+    .24s cubic-bezier(.4,0,.2,1);
+
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   1. ANIMATIONS
+   ============================================================ */
+
+@keyframes formFadeUp{
+  from{
+    opacity:0;
+    transform:translateY(8px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes formDropdownIn{
+  from{
+    opacity:0;
+    transform:translateY(-5px) scale(.985);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+@keyframes formButtonPress{
+  0%{
+    transform:scale(1);
+  }
+
+  50%{
+    transform:scale(.97);
+  }
+
+  100%{
+    transform:scale(1);
+  }
+}
+
+
+/* ============================================================
+   2. FONT
+   ============================================================ */
+
+.form,
+.form .view,
+.form .panel,
+.form .grid,
+.form input,
+.form textarea,
+.form select,
+.form span,
+.form div,
+.form td,
+.form th,
+.form a{
+  font-family:
+    "Public Sans",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif !important;
+}
+
+.form .panel-header-text span,
+.form .grid-header-text span{
+  font-family:
+    "Manrope",
+    "Public Sans",
+    sans-serif !important;
+}
+
+
+/* ============================================================
+   3. PAGE
+   ============================================================ */
+
+body{
+  background:
+    linear-gradient(
+      180deg,
+      #F7F9FC 0%,
+      #F2F5FA 100%
+    ) !important;
+
+  background-image:none !important;
+
+  min-height:100vh !important;
+}
+
+.form{
+  background:
+    transparent !important;
+
+  background-image:none !important;
+
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   4. FORM WIDTH / ROWS
+   ============================================================ */
+
+.form .row{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.form .formcontrol{
+  margin-top:0 !important;
+  margin-bottom:18px !important;
+}
+
+.form .row > .view{
+  display:inline-block !important;
+  float:none !important;
+  text-align:left !important;
+
+  margin:
+    0 auto 20px auto !important;
+
+  vertical-align:top !important;
+}
+
+
+/* ============================================================
+   5. HIDE EMPTY K2 ROWS
+   ============================================================ */
+
+.form .row:has(
+  > .formcontrol [style*="visibility: hidden"]
+),
+.form .row:has(
+  > .formcontrol [style*="visibility:hidden"]
+),
+.form .row[style*="display: none"],
+.form .row[style*="display:none"]{
+  display:none !important;
+}
+
+
+/* ============================================================
+   6. CARDS
+   ============================================================ */
+
+.form .view .panel,
+.form .view .grid{
+  background:
+    var(--surface-card) !important;
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    var(--radius-card) !important;
+
+  box-shadow:
+    var(--shadow-card) !important;
+
+  overflow:hidden !important;
+
+  animation:
+    formFadeUp .28s cubic-bezier(.4,0,.2,1) both;
+
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition) !important;
+}
+
+.form .view .panel:hover,
+.form .view .grid:hover{
+  border-color:#CCD5E5 !important;
+
+  box-shadow:
+    var(--shadow-card-hover) !important;
+}
+
+
+/* ============================================================
+   7. CARD HEADER
+   ============================================================ */
+
+.form .panel-header,
+.form .grid-header,
+.form .panel-header-l,
+.form .panel-header-c,
+.form .panel-header-r,
+.form .panel-header-wrapper,
+.form .grid-header-wrapper{
+  background:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+}
+
+.form .panel-header,
+.form .grid-header{
+
+  min-height:58px !important;
+
+  padding:
+    17px 22px !important;
+
+  background:
+    linear-gradient(
+      135deg,
+      #FFFFFF 0%,
+      #F7F9FE 100%
+    ) !important;
+
+  border:none !important;
+
+  border-bottom:
+    1px solid var(--border) !important;
+
+  border-left:
+    3px solid var(--primary) !important;
+
+  display:flex !important;
+
+  align-items:center !important;
+
+  box-sizing:border-box !important;
+}
+
+.form .panel-header-text span,
+.form .grid-header-text span{
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    15px !important;
+
+  font-weight:
+    700 !important;
+
+  letter-spacing:
+    -.01em !important;
+}
+
+.form a.collapse-vertical{
+  display:none !important;
+}
+
+
+/* ============================================================
+   8. CARD BODY
+   ============================================================ */
+
+.form .panel-body.STYLE-VIEW-padding,
+.form .grid-body.STYLE-VIEW-padding{
+
+  padding:
+    24px !important;
+
+  background:
+    #FFFFFF !important;
+}
+
+.form .panel-body-t,
+.form .panel-body-b,
+.form .panel-body-t-l,
+.form .panel-body-t-c,
+.form .panel-body-t-r,
+.form .panel-body-b-l,
+.form .panel-body-b-c,
+.form .panel-body-b-r,
+.form .panel-body-m-l,
+.form .panel-body-m-r{
+  display:none !important;
+}
+
+
+/* ============================================================
+   9. LABELS
+   ============================================================ */
+
+.form span.SourceCode-Forms-Controls-Web-Label{
+
+  color:
+    var(--text-label) !important;
+
+  font-size:
+    11px !important;
+
+  font-weight:
+    700 !important;
+
+  line-height:
+    1.4 !important;
+
+  text-transform:
+    uppercase !important;
+
+  letter-spacing:
+    .055em !important;
+
+  margin-bottom:
+    6px !important;
+
+  display:inline-block !important;
+}
+
+.form span.SourceCode-Forms-Controls-Web-DataLabel{
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    14px !important;
+
+  font-weight:
+    500 !important;
+
+  background:
+    transparent !important;
+}
+
+
+/* ============================================================
+   10. GRID LAYOUT
+   ============================================================ */
+
+.form .root-table.Grid-Layout{
+
+  width:
+    100% !important;
+
+  gap:
+    18px 24px !important;
+}
+
+.form .line-break.clearFloatFix{
+  display:none !important;
+}
+
+
+/* ============================================================
+   11. REMOVE K2 9-SLICE BORDERS
+   ============================================================ */
+
+.form .input-control-t,
+.form .input-control-b,
+.form .input-control-t-l,
+.form .input-control-t-c,
+.form .input-control-t-r,
+.form .input-control-b-l,
+.form .input-control-b-c,
+.form .input-control-b-r,
+.form .input-control-m-l,
+.form .input-control-m-r{
+  display:none !important;
+}
+
+
+/* ============================================================
+   12. TEXT INPUTS
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox{
+
+  width:
+    100% !important;
+
+  min-height:
+    40px !important;
+
+  padding:
+    10px 12px !important;
+
+  box-sizing:
+    border-box !important;
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    var(--radius-input) !important;
+
+  background:
+    var(--surface-input) !important;
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    13px !important;
+
+  font-weight:
+    500 !important;
+
+  box-shadow:
+    var(--shadow-input) !important;
+
+  outline:
+    none !important;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+
+/* ============================================================
+   13. TEXT INPUT HOVER
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:hover{
+
+  border-color:
+    var(--border-hover) !important;
+
+  background:
+    #FCFDFF !important;
+}
+
+
+/* ============================================================
+   14. TEXT INPUT FOCUS
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:focus{
+
+  border-color:
+    var(--border-focus) !important;
+
+  background:
+    #FFFFFF !important;
+
+  box-shadow:
+    var(--shadow-focus) !important;
+
+  outline:
+    none !important;
+}
+
+
+/* ============================================================
+   15. TEXTAREA
+   ============================================================ */
+
+.form .input-control.text-input textarea{
+
+  width:
+    100% !important;
+
+  min-height:
+    90px !important;
+
+  box-sizing:
+    border-box !important;
+
+  padding:
+    11px 12px !important;
+
+  border:
+    none !important;
+
+  outline:
+    none !important;
+
+  background:
+    transparent !important;
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    13px !important;
+
+  resize:
+    vertical !important;
+}
+
+
+/* ============================================================
+   16. K2 TEXT INPUT CONTAINER
+   ============================================================ */
+
+.form .input-control.text-input{
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    var(--radius-input) !important;
+
+  background:
+    var(--surface-input) !important;
+
+  box-shadow:
+    var(--shadow-input) !important;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast) !important;
+}
+
+.form .input-control.text-input:hover{
+
+  border-color:
+    var(--border-hover) !important;
+
+  background:
+    #FCFDFF !important;
+}
+
+.form .input-control.text-input:focus-within{
+
+  border-color:
+    var(--border-focus) !important;
+
+  box-shadow:
+    var(--shadow-focus) !important;
+
+  background:
+    #FFFFFF !important;
+}
+
+
+/* ============================================================
+   17. K2 DROPDOWN — MAIN CONTROL
+   ============================================================ */
+
+.form .input-control.select-box,
+.form .input-control.dropdown-box{
+
+  position:
+    relative !important;
+
+  width:
+    100% !important;
+
+  min-height:
+    40px !important;
+
+  box-sizing:
+    border-box !important;
+
+  padding:
+    0 38px 0 0 !important;
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    var(--radius-input) !important;
+
+  background:
+    #FFFFFF !important;
+
+  box-shadow:
+    var(--shadow-input) !important;
+
+  cursor:
+    pointer !important;
+
+  overflow:
+    hidden !important;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+
+/* ============================================================
+   18. DROPDOWN HOVER
+   ============================================================ */
+
+.form .input-control.select-box:hover,
+.form .input-control.dropdown-box:hover{
+
+  border-color:
+    var(--border-hover) !important;
+
+  background:
+    #FCFDFF !important;
+
+  transform:
+    translateY(-1px) !important;
+
+  box-shadow:
+    0 3px 10px rgba(16,24,40,.06) !important;
+}
+
+
+/* ============================================================
+   19. DROPDOWN FOCUS
+   ============================================================ */
+
+.form .input-control.select-box:focus-within,
+.form .input-control.dropdown-box:focus-within{
+
+  border-color:
+    var(--border-focus) !important;
+
+  box-shadow:
+    var(--shadow-focus) !important;
+
+  background:
+    #FFFFFF !important;
+}
+
+
+/* ============================================================
+   20. REMOVE ALL K2 DROPDOWN INTERNAL STYLING
+   ============================================================ */
+
+.form .input-control.select-box *,
+.form .input-control.dropdown-box *{
+
+  box-shadow:
+    none !important;
+
+  border:
+    none !important;
+
+  background-color:
+    transparent !important;
+
+  background-image:
+    none !important;
+}
+
+
+/* ============================================================
+   21. DROPDOWN TEXT
+   ============================================================ */
+
+.form .input-control.select-box .input-control-wrapper,
+.form .input-control.dropdown-box .input-control-wrapper{
+
+  width:
+    100% !important;
+
+  height:
+    40px !important;
+
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  overflow:
+    hidden !important;
+}
+
+.form .input-control.select-box
+.input-control-wrapper > a,
+
+.form .input-control.dropdown-box
+.input-control-wrapper > a{
+
+  display:
+    flex !important;
+
+  align-items:
+    center !important;
+
+  width:
+    100% !important;
+
+  height:
+    40px !important;
+
+  box-sizing:
+    border-box !important;
+
+  padding:
+    0 12px !important;
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    13px !important;
+
+  font-weight:
+    500 !important;
+
+  text-decoration:
+    none !important;
+
+  white-space:
+    nowrap !important;
+
+  overflow:
+    hidden !important;
+
+  text-overflow:
+    ellipsis !important;
+
+  cursor:
+    pointer !important;
+}
+
+
+/* ============================================================
+   22. DROPDOWN PLACEHOLDER
+   ============================================================ */
+
+.form .input-control.select-box
+.input-control-wrapper > a:empty,
+
+.form .input-control.dropdown-box
+.input-control-wrapper > a:empty{
+
+  color:
+    #98A2B3 !important;
+}
+
+
+/* ============================================================
+   23. CUSTOM CHEVRON
+   ============================================================ */
+
+.form .input-control.select-box::after,
+.form .input-control.dropdown-box::after{
+
+  content:
+    "" !important;
+
+  position:
+    absolute !important;
+
+  top:
+    50% !important;
+
+  right:
+    13px !important;
+
+  width:
+    8px !important;
+
+  height:
+    8px !important;
+
+  border-right:
+    2px solid #667085 !important;
+
+  border-bottom:
+    2px solid #667085 !important;
+
+  transform:
+    translateY(-65%) rotate(45deg) !important;
+
+  pointer-events:
+    none !important;
+
+  transition:
+    transform var(--transition-fast),
+    border-color var(--transition-fast) !important;
+}
+
+.form .input-control.select-box:hover::after,
+.form .input-control.dropdown-box:hover::after{
+
+  border-color:
+    var(--primary) !important;
+}
+
+.form .input-control.select-box:focus-within::after,
+.form .input-control.dropdown-box:focus-within::after{
+
+  border-color:
+    var(--primary) !important;
+
+  transform:
+    translateY(-25%) rotate(225deg) !important;
+}
+
+
+/* ============================================================
+   24. NATIVE SELECT
+   ============================================================ */
+
+.form select{
+
+  width:
+    100% !important;
+
+  min-height:
+    40px !important;
+
+  padding:
+    0 38px 0 12px !important;
+
+  box-sizing:
+    border-box !important;
+
+  appearance:
+    none !important;
+
+  -webkit-appearance:
+    none !important;
+
+  -moz-appearance:
+    none !important;
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    var(--radius-input) !important;
+
+  background:
+    #FFFFFF !important;
+
+  color:
+    var(--text-primary) !important;
+
+  font-size:
+    13px !important;
+
+  font-weight:
+    500 !important;
+
+  cursor:
+    pointer !important;
+
+  outline:
+    none !important;
+
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form select:hover{
+
+  border-color:
+    var(--border-hover) !important;
+
+  transform:
+    translateY(-1px) !important;
+}
+
+.form select:focus{
+
+  border-color:
+    var(--border-focus) !important;
+
+  box-shadow:
+    var(--shadow-focus) !important;
+
+  outline:
+    none !important;
+}
+
+.form select option{
+
+  background:
+    #FFFFFF !important;
+
+  color:
+    var(--text-primary) !important;
+
+  padding:
+    10px !important;
+}
+
+
+/* ============================================================
+   25. WATERMARK
+   ============================================================ */
+
+.form .input-control-watermark{
+
+  color:
+    #98A2B3 !important;
+
+  padding-left:
+    12px !important;
+}
+
+
+/* ============================================================
+   26. READ ONLY
+   ============================================================ */
+
+.form input[readonly],
+.form textarea[readonly],
+.form .input-control.read-only,
+.form .ui-lookupbox-disabled{
+
+  background:
+    #F8FAFC !important;
+
+  color:
+    var(--text-secondary) !important;
+
+  border-color:
+    #E4E7EC !important;
+}
+
+
+/* ============================================================
+   27. GRID TOOLBAR
+   ============================================================ */
+
+.form .grid-toolbars{
+
+  padding:
+    14px 22px 10px !important;
+
+  background:
+    #FFFFFF !important;
+
+  border:
+    none !important;
+
+  border-bottom:
+    1px solid var(--border) !important;
+}
+
+.form a.toolbar-button{
+
+  text-decoration:
+    none !important;
+
+  padding:
+    7px 10px !important;
+
+  border-radius:
+    7px !important;
+
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form a.toolbar-button:hover{
+
+  background:
+    var(--primary-soft) !important;
+
+  transform:
+    translateY(-1px) !important;
+}
+
+.form a.toolbar-button .button-text{
+
+  color:
+    var(--primary) !important;
+
+  font-size:
+    12.5px !important;
+
+  font-weight:
+    700 !important;
+}
+
+
+/* ============================================================
+   28. GRID
+   ============================================================ */
+
+.form .grid-body-content,
+.form .grid-body-content-wrapper,
+.form .scroll-wrapper{
+
+  overflow-x:
+    hidden !important;
+
+  overflow-y:
+    visible !important;
+}
+
+.form .scroll-wrapper > table.grid-content-table,
+.form table.grid-column-header-table,
+.form table.grid-edit-templates-table,
+.form table.grid-display-templates-table,
+.form table.grid-summary-content-table{
+
+  width:
+    100% !important;
+
+  max-width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  table-layout:
+    fixed !important;
+}
+
+
+/* ============================================================
+   29. GRID HEADER
+   ============================================================ */
+
+.form .grid-column-header-table{
+
+  background:
+    #F8FAFC !important;
+
+  border:
+    none !important;
+
+  border-bottom:
+    1px solid var(--border) !important;
+}
+
+.form .grid-column-header-text{
+
+  color:
+    #475467 !important;
+
+  font-size:
+    10px !important;
+
+  font-weight:
+    700 !important;
+
+  text-transform:
+    uppercase !important;
+
+  letter-spacing:
+    .065em !important;
+
+  padding:
+    12px 13px !important;
+}
+
+.form .grid-column-header-divider{
+  display:none !important;
+}
+
+
+/* ============================================================
+   30. GRID CELLS
+   ============================================================ */
+
+.form .grid-content-cell{
+
+  color:
+    var(--text-primary) !important;
+
+  background:
+    #FFFFFF !important;
+
+  border:
+    none !important;
+
+  border-bottom:
+    1px solid #EAECF0 !important;
+
+  padding:
+    11px 12px !important;
+
+  vertical-align:
+    middle !important;
+
+  transition:
+    background-color var(--transition-fast) !important;
+}
+
+.form .zebra-stripes tr:nth-child(even) td{
+
+  background:
+    #FAFBFD !important;
+}
+
+.form .grid-content-table tr:hover td{
+
+  background:
+    #F5F8FF !important;
+}
+
+
+/* ============================================================
+   31. SELECTED GRID ROW
+   ============================================================ */
+
+.form tr.edit-template-row td,
+.form .grid-content-table tr.selected td{
+
+  background:
+    #EEF3FF !important;
+}
+
+
+/* ============================================================
+   32. GRID EDIT MODE
+   ============================================================ */
+
+.form .grid-content-cell.edit-mode{
+
+  padding:
+    7px !important;
+
+  background:
+    #F8FAFF !important;
+
+  border-bottom:
+    1px solid var(--border) !important;
+}
+
+.form .grid-content-cell.edit-mode .grid-content-cell-wrapper{
+
+  width:
+    100% !important;
+}
+
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode textarea,
+.form .grid-content-cell.edit-mode .input-control{
+
+  width:
+    100% !important;
+
+  max-width:
+    100% !important;
+
+  min-width:
+    0 !important;
+
+  box-sizing:
+    border-box !important;
+}
+
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode .input-control-wrapper > a{
+
+  padding:
+    8px 10px !important;
+
+  font-size:
+    12px !important;
+}
+
+.form .grid-content-cell.edit-mode .input-control{
+
+  border:
+    1px solid var(--border) !important;
+
+  border-radius:
+    7px !important;
+
+  background:
+    #FFFFFF !important;
+}
+
+
+/* ============================================================
+   33. GRID ACTIONS
+   ============================================================ */
+
+.form a.action-row{
+
+  color:
+    var(--primary) !important;
+
+  font-size:
+    12px !important;
+
+  font-weight:
+    700 !important;
+
+  text-decoration:
+    none !important;
+
+  transition:
+    color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form a.action-row:hover{
+
+  color:
+    var(--primary-hover) !important;
+}
+
+
+/* ============================================================
+   34. GRID SUMMARY
+   ============================================================ */
+
+.form .grid-summary-row td{
+
+  background:
+    #F8FAFC !important;
+
+  border-top:
+    1px solid var(--border) !important;
+
+  padding-top:
+    15px !important;
+}
+
+.form span[name="Sum Label"]{
+
+  color:
+    var(--text-muted) !important;
+
+  font-size:
+    10px !important;
+
+  font-weight:
+    700 !important;
+
+  text-transform:
+    uppercase !important;
+
+  letter-spacing:
+    .06em !important;
+}
+
+.form span[name="Sum USD Amount"]{
+
+  color:
+    var(--primary) !important;
+
+  font-family:
+    "JetBrains Mono",
+    monospace !important;
+
+  font-size:
+    20px !important;
+
+  font-weight:
+    600 !important;
+}
+
+.form span[name="Amount Data Label"],
+.form span[name="USD Amount Data Label"],
+.form span[name="Total Amount Data Label"]{
+
+  color:
+    var(--text-primary) !important;
+
+  font-family:
+    "JetBrains Mono",
+    monospace !important;
+}
+
+
+/* ============================================================
+   35. FILE / RECEIPT
+   ============================================================ */
+
+.form .grid-content-cell .file-wrapper,
+.form .grid-content-cell .file-table{
+
+  width:
+    100% !important;
+
+  max-width:
+    100% !important;
+
+  overflow:
+    hidden !important;
+}
+
+.form .grid-content-cell .file-tn-cell{
+  display:none !important;
+}
+
+.form .file-wrapper .file-watermark{
+
+  display:
+    inline-block !important;
+
+  max-width:
+    100% !important;
+
+  padding:
+    6px 11px !important;
+
+  border:
+    1px dashed #B8C8F0 !important;
+
+  border-radius:
+    7px !important;
+
+  background:
+    #F2F5FF !important;
+
+  color:
+    var(--primary) !important;
+
+  font-size:
+    10.5px !important;
+
+  font-weight:
+    600 !important;
+
+  white-space:
+    nowrap !important;
+
+  overflow:
+    hidden !important;
+
+  text-overflow:
+    ellipsis !important;
+
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form .file-wrapper .file-watermark:hover{
+
+  background:
+    #E9EFFF !important;
+
+  border-color:
+    #91A8EB !important;
+
+  transform:
+    translateY(-1px) !important;
+}
+
+
+/* ============================================================
+   36. BUTTONS
+   ============================================================ */
+
+.form a.SourceCode-Forms-Controls-Web-Button{
+
+  min-height:
+    40px !important;
+
+  padding:
+    10px 20px !important;
+
+  border:
+    none !important;
+
+  border-radius:
+    var(--radius-button) !important;
+
+  background:
+    var(--primary) !important;
+
+  color:
+    #FFFFFF !important;
+
+  font-size:
+    13px !important;
+
+  font-weight:
+    700 !important;
+
+  text-decoration:
+    none !important;
+
+  display:
+    inline-flex !important;
+
+  align-items:
+    center !important;
+
+  justify-content:
+    center !important;
+
+  box-sizing:
+    border-box !important;
+
+  cursor:
+    pointer !important;
+
+  transition:
+    background-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button span{
+
+  color:
+    #FFFFFF !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:hover{
+
+  background:
+    var(--primary-hover) !important;
+
+  transform:
+    translateY(-1px) !important;
+
+  box-shadow:
+    0 5px 14px rgba(49,87,200,.20) !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:active{
+
+  transform:
+    translateY(0) scale(.98) !important;
+}
+
+
+/* ============================================================
+   37. SUBMIT
+   ============================================================ */
+
+.form a[name="Button Submit"],
+.form a[name="Button Finance Processing"]{
+
+  background:
+    var(--primary) !important;
+
+  box-shadow:
+    0 4px 12px rgba(49,87,200,.18) !important;
+}
+
+.form a[name="Button Submit"]:hover,
+.form a[name="Button Finance Processing"]:hover{
+
+  background:
+    var(--primary-hover) !important;
+
+  box-shadow:
+    0 7px 18px rgba(49,87,200,.24) !important;
+}
+
+
+/* ============================================================
+   38. APPROVE
+   ============================================================ */
+
+.form a[name="Approve Button"]{
+
+  background:
+    var(--success) !important;
+
+  box-shadow:
+    0 4px 12px rgba(21,149,112,.16) !important;
+}
+
+.form a[name="Approve Button"]:hover{
+
+  background:
+    var(--success-hover) !important;
+
+  box-shadow:
+    0 7px 18px rgba(21,149,112,.22) !important;
+}
+
+
+/* ============================================================
+   39. REJECT / CANCEL
+   ============================================================ */
+
+.form a[name="Reject Button"],
+.form a[name="Button Cancel"],
+.form a[name="Cancel Claim Button"]{
+
+  background:
+    var(--danger) !important;
+
+  box-shadow:
+    0 4px 12px rgba(214,69,69,.15) !important;
+}
+
+.form a[name="Reject Button"]:hover,
+.form a[name="Button Cancel"]:hover,
+.form a[name="Cancel Claim Button"]:hover{
+
+  background:
+    var(--danger-hover) !important;
+}
+
+
+/* ============================================================
+   40. REWORK
+   ============================================================ */
+
+.form a[name="Rework Button"],
+.form a[name="Resubmit Claim Button"]{
+
+  background:
+    var(--warning) !important;
+
+  box-shadow:
+    0 4px 12px rgba(201,137,30,.15) !important;
+}
+
+.form a[name="Rework Button"]:hover,
+.form a[name="Resubmit Claim Button"]:hover{
+
+  background:
+    var(--warning-hover) !important;
+}
+
+
+/* ============================================================
+   41. LOGO
+   ============================================================ */
+
+.form img.picture-control-inline{
+
+  display:
+    block !important;
+
+  margin:
+    0 auto !important;
+
+  border-radius:
+    12px !important;
+}
+
+.form img[name="Nav Logo"]{
+
+  width:
+    auto !important;
+
+  max-height:
+    48px !important;
+
+  margin:
+    0 !important;
+
+  display:
+    block !important;
+
+  border-radius:
+    0 !important;
+}
+
+
+/* ============================================================
+   42. TOP NAV / REFERENCE
+   ============================================================ */
+
+.form div[name="Table"][id*="4aa19b56"]{
+
+  width:
+    78% !important;
+
+  margin:
+    0 auto !important;
+
+  gap:
+    0 !important;
+}
+
+.form span[name="Reference"]{
+
+  display:
+    block !important;
+
+  text-align:
+    right !important;
+
+  color:
+    var(--text-muted) !important;
+
+  font-size:
+    10px !important;
+
+  font-weight:
+    700 !important;
+
+  text-transform:
+    uppercase !important;
+
+  letter-spacing:
+    .06em !important;
+}
+
+.form span[name="Refernce ID"]{
+
+  display:
+    block !important;
+
+  text-align:
+    right !important;
+
+  color:
+    var(--text-primary) !important;
+
+  font-family:
+    "JetBrains Mono",
+    monospace !important;
+
+  font-size:
+    13px !important;
+
+  font-weight:
+    600 !important;
+
+  margin-top:
+    2px !important;
+}
+
+
+/* ============================================================
+   43. SCROLLBAR
+   ============================================================ */
+
+.form ::-webkit-scrollbar{
+
+  width:
+    7px !important;
+
+  height:
+    7px !important;
+}
+
+.form ::-webkit-scrollbar-track{
+
+  background:
+    transparent !important;
+}
+
+.form ::-webkit-scrollbar-thumb{
+
+  background:
+    #C9D1DF !important;
+
+  border-radius:
+    999px !important;
+}
+
+.form ::-webkit-scrollbar-thumb:hover{
+
+  background:
+    #9BA9C1 !important;
+}
