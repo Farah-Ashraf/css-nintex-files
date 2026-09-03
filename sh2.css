@@ -1,0 +1,548 @@
+/* ============================================================
+   ICT MISR — Expense Claim Form
+   Nintex Automation (K2) custom style profile
+   Theme: Dark Mode (navy / indigo, dark surfaces)
+
+   SCOPING RULE: every selector is prefixed with `.form` so it
+   cannot leak into the K2 Designer UI. Do not add bare selectors.
+   ============================================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Public+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@500;600&display=swap');
+
+:root{
+  /* dark surfaces — lighter slate/navy, not near-black */
+  --bg-page:#1B2438;
+  --surface-card:#242E4A;
+  --surface-raised:#2C3758;
+  --surface-input:#1F2942;
+  --surface-input-hover:#28324F;
+  --header-bar:#212B45;
+
+  /* accent */
+  --indigo-600:#6685F5;
+  --indigo-500:#87A2F7;
+  --indigo-glow:rgba(102,133,245,.20);
+  --indigo-border:rgba(102,133,245,.40);
+
+  /* text */
+  --text-primary:#F4F6FC;
+  --text-secondary:#C2CADE;
+  --text-muted:#8D97B8;
+
+  /* borders */
+  --border-soft:#3A4568;
+  --border-strong:#4A5580;
+
+  /* status */
+  --success:#3DBD84;
+  --amber:#E0A63F;
+  --danger:#E4675F;
+
+  --white:#FFFFFF;
+  --shadow-card:0 1px 0 rgba(255,255,255,.03) inset, 0 14px 32px -14px rgba(0,0,0,.45);
+}
+
+/* ============================================================
+   1. FONTS
+   ============================================================ */
+.form,
+.form .view, .form .panel, .form .grid,
+.form input, .form textarea, .form select,
+.form span, .form div, .form td, .form a{
+  font-family:'Public Sans',-apple-system,"Segoe UI",Roboto,sans-serif !important;
+}
+.form .panel-header-text span,
+.form .grid-header-text span{
+  font-family:'Manrope',sans-serif !important;
+}
+
+/* ============================================================
+   2. PAGE BACKGROUND
+   NOTE: clear the "Background Image" field in Form Properties,
+   otherwise K2's inline style fights this.
+   ============================================================ */
+body{
+  background-color:var(--bg-page) !important;
+  /* scrim over the photo so the dark UI stays legible on top of it */
+  background-image:
+    linear-gradient(rgba(27,36,56,.90), rgba(27,36,56,.90)),
+    url('expense-claim-bg.jpg') !important;
+  background-size:cover !important;
+  background-position:center center !important;
+  background-attachment:fixed !important;
+  background-repeat:no-repeat !important;
+  min-height:100vh !important;
+}
+.form{
+  background-color:transparent !important;
+  background-image:none !important;
+  color:var(--text-primary) !important;
+}
+
+/* ============================================================
+   3. ROW SPACING — collapse hidden rows so they take no height
+   ============================================================ */
+.form .row:has(> .formcontrol [style*="visibility: hidden"]),
+.form .row:has(> .formcontrol [style*="visibility:hidden"]),
+.form .row[style*="display: none"],
+.form .row[style*="display:none"]{
+  display:none !important;
+}
+.form .row{
+  margin:0 !important;
+  padding:0 !important;
+  text-align:center !important;
+}
+.form .formcontrol{
+  margin-top:0 !important;
+  margin-bottom:12px !important;
+}
+
+/* ============================================================
+   4. CENTER THE VIEWS (respects the 75% width setting)
+   ============================================================ */
+.form .row > .view{
+  display:inline-block !important;
+  float:none !important;
+  text-align:left !important;
+  margin:0 auto 20px auto !important;
+  vertical-align:top !important;
+}
+
+/* ============================================================
+   5. THE CARD  (.panel / .grid — .view is only a width wrapper)
+   ============================================================ */
+.form .view .panel,
+.form .view .grid{
+  background:var(--surface-card) !important;
+  border:1px solid var(--border-soft) !important;
+  border-radius:14px !important;
+  box-shadow:var(--shadow-card) !important;
+  overflow:hidden !important;
+}
+.form .gridSummaryNeedLeftBorder,
+.form .gridSummaryNeedRightBorder,
+.form .gridSummaryNeedTopBorder,
+.form .gridSummaryNeedBottomBorder{
+  border:1px solid var(--border-soft) !important;
+}
+
+/* ============================================================
+   6. CARD HEADER — accent-tinted bar instead of grey
+   ============================================================ */
+.form .panel-header, .form .grid-header,
+.form .panel-header-l, .form .panel-header-c, .form .panel-header-r,
+.form .panel-header-wrapper, .form .grid-header-wrapper{
+  background:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+}
+.form .panel-header, .form .grid-header{
+  border:none !important;
+  border-bottom:1px solid var(--border-soft) !important;
+  border-left:3px solid var(--indigo-600) !important;
+  padding:18px 22px !important;
+  background-color:var(--surface-raised) !important;
+}
+.form .panel-header-text span,
+.form .grid-header-text span{
+  color:var(--text-primary) !important;
+  font-size:16px !important;
+  font-weight:700 !important;
+  letter-spacing:-.01em !important;
+}
+.form a.collapse-vertical{ display:none !important; }
+
+/* ============================================================
+   7. BODY PADDING — overrides K2's inline 30px
+   ============================================================ */
+.form .panel-body.STYLE-VIEW-padding,
+.form .grid-body.STYLE-VIEW-padding{
+  padding:24px !important;
+}
+.form .panel-body-t, .form .panel-body-b,
+.form .panel-body-t-l, .form .panel-body-t-c, .form .panel-body-t-r,
+.form .panel-body-b-l, .form .panel-body-b-c, .form .panel-body-b-r,
+.form .panel-body-m-l, .form .panel-body-m-r{
+  display:none !important;
+}
+
+/* ============================================================
+   8. HEADER FIELD GRID
+   ============================================================ */
+.form .root-table.Grid-Layout{
+  width:100% !important;
+  gap:18px 24px !important;
+}
+.form .line-break.clearFloatFix{ display:none !important; }
+
+.form span.SourceCode-Forms-Controls-Web-Label{
+  font-size:13px !important;
+  font-weight:600 !important;
+  color:var(--text-secondary) !important;
+  line-height:1.4 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.03em !important;
+}
+.form span.SourceCode-Forms-Controls-Web-DataLabel{
+  font-size:14.5px !important;
+  color:var(--text-primary) !important;
+  background:transparent !important;
+}
+
+/* ============================================================
+   9. INPUTS — remove K2's 9-slice border pieces
+   ============================================================ */
+.form .input-control-t, .form .input-control-b,
+.form .input-control-t-l, .form .input-control-t-c, .form .input-control-t-r,
+.form .input-control-b-l, .form .input-control-b-c, .form .input-control-b-r,
+.form .input-control-m-l, .form .input-control-m-r{
+  display:none !important;
+}
+
+.form input.SourceCode-Forms-Controls-Web-TextBox,
+.form .input-control.text-input,
+.form .input-control.select-box,
+.form .input-control.dropdown-box,
+.form .input-control.calendar-control{
+  border:1px solid var(--border-strong) !important;
+  border-radius:9px !important;
+  background:var(--surface-input) !important;
+  box-shadow:none !important;
+  color:var(--text-primary) !important;
+  font-size:13.5px !important;
+  box-sizing:border-box !important;
+  transition:border-color .12s ease, box-shadow .12s ease, background-color .12s ease !important;
+}
+.form input.SourceCode-Forms-Controls-Web-TextBox{
+  padding:10px 12px !important;
+}
+
+.form .input-control.text-input textarea{
+  border:none !important;
+  background:transparent !important;
+  padding:10px 12px !important;
+  min-height:64px !important;
+  resize:vertical !important;
+  width:100% !important;
+  box-sizing:border-box !important;
+}
+.form .input-control.text-input .input-control-wrapper > input,
+.form .input-control.select-box .input-control-wrapper > a{
+  border:none !important;
+  background:transparent !important;
+  padding:10px 12px !important;
+}
+/* Native <select> elements and K2's internal dropdown wrappers render
+   with their own white background by default — this catches them. */
+.form select,
+.form .input-control.select-box select,
+.form .input-control.dropdown-box select,
+.form .select-box-wrapper,
+.form .dropdown-box-wrapper,
+.form .ui-lookupbox,
+.form .ui-lookupbox-wrapper,
+.form .ui-selectmenu-button,
+.form .ui-selectmenu-status{
+  background:transparent !important;
+  background-color:transparent !important;
+  color:var(--text-primary) !important;
+  border:none !important;
+}
+.form select option{
+  background:var(--surface-input) !important;
+  color:var(--text-primary) !important;
+}
+/* the dropdown arrow icon is often a dark-colored image sprite —
+   invert it so it stays visible on the dark field */
+.form .input-control.select-box .input-control-wrapper > a,
+.form .input-control.dropdown-box .input-control-wrapper > a{
+  filter:none !important;
+}
+.form .input-control.select-box .dropdown-arrow,
+.form .input-control.select-box .select-arrow,
+.form .input-control.dropdown-box .dropdown-arrow{
+  filter:invert(1) brightness(1.4) !important;
+}
+
+.form .input-control-watermark{
+  color:var(--text-muted) !important;
+  padding-left:12px !important;
+}
+.form input:focus, .form textarea:focus{
+  border-color:var(--indigo-500) !important;
+  box-shadow:0 0 0 3px var(--indigo-glow) !important;
+  outline:none !important;
+  background-color:var(--surface-input-hover) !important;
+}
+
+/* read-only / post-submit: subtle raised fill, no bright grey */
+.form .SourceCode-Forms-Controls-Web-DataLabel.readonly,
+.form .SourceCode-Forms-Controls-Web-DataLabel.empty,
+.form input[readonly], .form textarea[readonly],
+.form .input-control.read-only,
+.form .ui-lookupbox-disabled{
+  background:transparent !important;
+  background-color:transparent !important;
+  border-color:var(--border-soft) !important;
+  color:var(--text-secondary) !important;
+}
+.form .input-control.text-input.read-only{
+  background-color:var(--surface-raised) !important;
+}
+
+/* ============================================================
+   10. LINE ITEMS GRID
+   ============================================================ */
+.form .grid-toolbars{
+  padding:14px 24px 0 !important;
+  border:none !important;
+}
+.form a.toolbar-button .button-text{
+  color:var(--indigo-500) !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+}
+
+/* horizontal only — never touch overflow-y (breaks page scrolling) */
+.form .grid-body-content,
+.form .grid-body-content-wrapper,
+.form .scroll-wrapper{
+  overflow-x:hidden !important;
+  overflow-y:visible !important;
+}
+.form .scroll-wrapper > table.grid-content-table,
+.form table.grid-column-header-table,
+.form table.grid-edit-templates-table,
+.form table.grid-display-templates-table,
+.form table.grid-summary-content-table{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed !important;
+}
+
+.form .grid-column-headers,
+.form .grid-body-content-wrapper{ border:none !important; }
+.form .grid-column-header-table{
+  background:var(--header-bar) !important;
+  border-bottom:1px solid var(--border-strong) !important;
+}
+.form .grid-column-header-text{
+  color:var(--text-secondary) !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
+  padding:11px 12px !important;
+}
+.form .grid-column-header-divider{ display:none !important; }
+
+.form .grid-content-cell{
+  border:none !important;
+  border-bottom:1px solid var(--border-soft) !important;
+  padding:9px 10px !important;
+  vertical-align:middle !important;
+  overflow:hidden !important;
+  color:var(--text-primary) !important;
+}
+.form .zebra-stripes tr:nth-child(even) td{
+  background:var(--surface-raised) !important;
+}
+.form tr.edit-template-row td,
+.form .grid-content-table tr.selected td{
+  background:var(--indigo-glow) !important;
+}
+
+/* edit row — keep inputs inside their cells */
+.form .grid-content-cell.edit-mode{
+  padding:8px !important;
+  border-bottom:1px solid var(--border-soft) !important;
+  overflow:hidden !important;
+}
+.form .grid-content-cell.edit-mode .grid-content-cell-wrapper{
+  width:100% !important;
+}
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode textarea,
+.form .grid-content-cell.edit-mode .input-control{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+}
+.form .grid-content-cell.edit-mode textarea{
+  min-height:34px !important;
+  height:34px !important;
+  max-height:34px !important;
+  resize:none !important;
+  overflow:hidden !important;
+  padding:8px 10px !important;
+}
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode .input-control-wrapper > a{
+  padding:8px 10px !important;
+  font-size:13px !important;
+}
+.form .grid-content-cell.edit-mode .input-control{
+  border:1px solid var(--border-strong) !important;
+}
+
+.form a.action-row{
+  color:var(--indigo-500) !important;
+  font-weight:700 !important;
+  font-size:13px !important;
+}
+
+/* summary / totals */
+.form .grid-summary-row td{
+  border-top:1px solid var(--border-soft) !important;
+  padding-top:14px !important;
+}
+.form span[name="Sum Label"]{
+  font-size:11px !important;
+  color:var(--text-muted) !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
+}
+.form span[name="Sum USD Amount"]{
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:20px !important;
+  font-weight:600 !important;
+  color:var(--indigo-500) !important;
+}
+.form span[name="Amount Data Label"],
+.form span[name="USD Amount Data Label"],
+.form span[name="Total Amount Data Label"]{
+  font-family:'JetBrains Mono',monospace !important;
+  color:var(--text-primary) !important;
+}
+
+/* receipt cell */
+.form .grid-content-cell .file-wrapper,
+.form .grid-content-cell .file-table{
+  width:100% !important;
+  max-width:100% !important;
+  overflow:hidden !important;
+}
+.form .grid-content-cell .file-table,
+.form .grid-content-cell .file-label{ height:auto !important; }
+.form .grid-content-cell .file-tn-cell{ display:none !important; }
+.form .file-wrapper .file-watermark{
+  color:var(--indigo-500) !important;
+  background:var(--indigo-glow) !important;
+  border:1px dashed var(--indigo-border) !important;
+  border-radius:999px !important;
+  padding:5px 8px !important;
+  font-size:10.5px !important;
+  display:inline-block !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  max-width:100% !important;
+}
+
+/* ============================================================
+   11. BUTTONS
+   ============================================================ */
+.form a.SourceCode-Forms-Controls-Web-Button{
+  border:none !important;
+  border-radius:9px !important;
+  padding:11px 22px !important;
+  font-size:13.5px !important;
+  font-weight:700 !important;
+  text-decoration:none !important;
+  display:inline-block !important;
+  color:#FFFFFF !important;
+}
+.form a.SourceCode-Forms-Controls-Web-Button span{
+  color:#FFFFFF !important;
+}
+
+.form a[name="Button Submit"],
+.form a[name="Button Finance Processing"]{
+  background-color:var(--indigo-600) !important;
+  box-shadow:0 6px 18px -6px rgba(91,124,240,.5) !important;
+}
+.form a[name="Button Submit"]:hover,
+.form a[name="Button Finance Processing"]:hover{
+  background-color:var(--indigo-500) !important;
+}
+
+.form a[name="Approve Button"]{
+  background-color:var(--success) !important;
+}
+.form a[name="Approve Button"]:hover{
+  background-color:#4FD09B !important;
+}
+
+.form a[name="Reject Button"],
+.form a[name="Button Cancel"],
+.form a[name="Cancel Claim Button"]{
+  background-color:var(--danger) !important;
+}
+.form a[name="Reject Button"]:hover,
+.form a[name="Button Cancel"]:hover,
+.form a[name="Cancel Claim Button"]:hover{
+  background-color:#EF867F !important;
+}
+
+.form a[name="Rework Button"],
+.form a[name="Resubmit Claim Button"]{
+  background-color:var(--amber) !important;
+}
+.form a[name="Rework Button"]:hover,
+.form a[name="Resubmit Claim Button"]:hover{
+  background-color:#EDBB5E !important;
+}
+
+/* ============================================================
+   12. TOP BAR (logo + reference) + BANNER IMAGES
+   ============================================================ */
+.form img.picture-control-inline{
+  border-radius:12px !important;
+  display:block !important;
+  margin:0 auto !important;
+}
+
+/* top bar table — match the 75% card width */
+.form div[name="Table"][id*="4aa19b56"]{
+  width:75% !important;
+  margin:0 auto !important;
+  gap:0 !important;
+}
+
+/* logo — kept top-left, override the inline width:20%
+   NOTE: if the logo file has dark artwork on a transparent
+   background, uncomment the white chip below so it stays visible
+   on the dark page. */
+.form img[name="Nav Logo"]{
+  width:auto !important;
+  max-height:52px !important;
+  margin:0 !important;
+  display:block !important;
+  border-radius:0 !important;
+  /* background:var(--white) !important;
+  padding:8px 12px !important;
+  border-radius:8px !important; */
+}
+
+.form span[name="Reference"]{
+  display:block !important;
+  text-align:right !important;
+  font-size:12px !important;
+  color:var(--text-muted) !important;
+  line-height:1.2 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.04em !important;
+}
+.form span[name="Refernce ID"]{
+  display:block !important;
+  text-align:right !important;
+  font-family:'JetBrains Mono',monospace !important;
+  font-size:14px !important;
+  font-weight:600 !important;
+  color:var(--text-primary) !important;
+  line-height:1.3 !important;
+  margin-top:2px !important;
+}
