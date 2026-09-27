@@ -1,0 +1,1017 @@
+/* ============================================================
+   MORTGAGE LOAN APPLICATION — CUSTOMER_LOAN_FORM
+   "MERIDIAN" MODERN THEME
+   K2 / Nintex SmartForms
+
+   Scoped to .form
+   ============================================================ */
+
+
+/* ============================================================
+   0. VARIABLES
+   ============================================================ */
+
+.form{
+  --bg-page:#EEF1FA;
+
+  --surface-card:#FFFFFF;
+  --surface-tile:#F6F8FE;
+  --surface-tile-hover:#EFF2FE;
+
+  --primary:#4F46E5;
+  --primary-2:#14B8A6;
+  --primary-hover:#4338CA;
+  --primary-soft:#EEF0FF;
+  --primary-border:#D6D9FB;
+
+  --text-primary:#0F172A;
+  --text-secondary:#4B5768;
+  --text-muted:#7A869C;
+  --text-label:#5B6472;
+
+  --border:#E3E7F1;
+  --border-hover:#C7CEE8;
+  --border-focus:#6D63EE;
+
+  --success:#0EA97A;
+  --success-hover:#0C8E67;
+
+  --danger:#E24545;
+  --danger-hover:#C93A3A;
+
+  --warning:#DA8B1B;
+  --warning-hover:#BC7614;
+
+  --gradient-brand:
+    linear-gradient(120deg,#4F46E5 0%,#7C6FF0 45%,#14B8A6 100%);
+
+  --shadow-card:
+    0 1px 2px rgba(20,24,44,.04),
+    0 10px 28px rgba(38,42,84,.07);
+
+  --shadow-card-hover:
+    0 3px 6px rgba(20,24,44,.06),
+    0 18px 40px rgba(38,42,84,.10);
+
+  --shadow-tile:
+    inset 0 0 0 1px rgba(79,70,229,.06);
+
+  --shadow-focus:
+    0 0 0 4px rgba(79,70,229,.12);
+
+  --shadow-button:
+    0 6px 16px rgba(79,70,229,.28);
+
+  --radius-card:18px;
+  --radius-input:10px;
+  --radius-button:999px;
+
+  --transition-fast:
+    .15s cubic-bezier(.4,0,.2,1);
+
+  --transition:
+    .26s cubic-bezier(.4,0,.2,1);
+
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   1. ANIMATIONS
+   ============================================================ */
+
+@keyframes meridianFadeUp{
+  from{
+    opacity:0;
+    transform:translateY(10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+@keyframes meridianGlow{
+  0%,100%{
+    opacity:.75;
+  }
+  50%{
+    opacity:1;
+  }
+}
+
+
+/* ============================================================
+   2. FONT
+   ============================================================ */
+
+.form,
+.form .view,
+.form .panel,
+.form .grid,
+.form input,
+.form textarea,
+.form select,
+.form span,
+.form div,
+.form td,
+.form th,
+.form a,
+.form label{
+  font-family:
+    "Inter",
+    "Poppins",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    Roboto,
+    sans-serif !important;
+}
+
+.form .panel-header-text span,
+.form .grid-header-text span{
+  font-family:
+    "Poppins",
+    "Inter",
+    sans-serif !important;
+}
+
+
+/* ============================================================
+   3. PAGE
+   ============================================================ */
+
+body{
+  background:
+    radial-gradient(
+      1200px 500px at 10% -10%,
+      #EDEBFF 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      1000px 480px at 100% 0%,
+      #E4FBF5 0%,
+      transparent 55%
+    ),
+    linear-gradient(
+      180deg,
+      #F3F5FC 0%,
+      #ECEFF9 100%
+    ) !important;
+
+  background-image:
+    radial-gradient(1200px 500px at 10% -10%,#EDEBFF 0%,transparent 60%),
+    radial-gradient(1000px 480px at 100% 0%,#E4FBF5 0%,transparent 55%),
+    linear-gradient(180deg,#F3F5FC 0%,#ECEFF9 100%) !important;
+
+  min-height:100vh !important;
+}
+
+.form{
+  background:transparent !important;
+  background-image:none !important;
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   4. FORM WIDTH / ROWS
+   ============================================================ */
+
+.form .row{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.form .formcontrol{
+  margin-top:0 !important;
+  margin-bottom:20px !important;
+}
+
+.form .row > .view{
+  display:inline-block !important;
+  float:none !important;
+  text-align:left !important;
+  margin:0 auto 22px auto !important;
+  vertical-align:top !important;
+}
+
+
+/* ============================================================
+   5. HIDE EMPTY K2 ROWS
+   ============================================================ */
+
+.form .row:has(> .formcontrol [style*="visibility: hidden"]),
+.form .row:has(> .formcontrol [style*="visibility:hidden"]),
+.form .row[style*="display: none"],
+.form .row[style*="display:none"]{
+  display:none !important;
+}
+
+
+/* ============================================================
+   6. CARDS (panel / grid)
+   ============================================================ */
+
+.form .view .panel,
+.form .view .grid{
+  position:relative !important;
+  background:var(--surface-card) !important;
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-card) !important;
+  box-shadow:var(--shadow-card) !important;
+  overflow:hidden !important;
+  animation:meridianFadeUp .32s cubic-bezier(.4,0,.2,1) both;
+  transition:
+    box-shadow var(--transition),
+    border-color var(--transition),
+    transform var(--transition) !important;
+}
+
+/* top brand accent stripe on every card */
+.form .view .panel::before,
+.form .view .grid::before{
+  content:"" !important;
+  position:absolute !important;
+  top:0 !important;
+  left:0 !important;
+  right:0 !important;
+  height:4px !important;
+  background:var(--gradient-brand) !important;
+  z-index:2 !important;
+}
+
+.form .view .panel:hover,
+.form .view .grid:hover{
+  border-color:#D3D9F0 !important;
+  box-shadow:var(--shadow-card-hover) !important;
+  transform:translateY(-2px) !important;
+}
+
+
+/* ============================================================
+   7. CARD HEADER
+   ============================================================ */
+
+.form .panel-header,
+.form .grid-header,
+.form .panel-header-l,
+.form .panel-header-c,
+.form .panel-header-r,
+.form .panel-header-wrapper,
+.form .grid-header-wrapper{
+  background:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+}
+
+.form .panel-header,
+.form .grid-header{
+  min-height:60px !important;
+  padding:18px 24px 16px 24px !important;
+  background:#FFFFFF !important;
+  border:none !important;
+  border-bottom:1px solid var(--border) !important;
+  display:flex !important;
+  align-items:center !important;
+  box-sizing:border-box !important;
+}
+
+/* small gradient dot marker before every card title */
+.form .panel-header-text,
+.form .grid-header-text{
+  position:relative !important;
+  padding-left:18px !important;
+}
+
+.form .panel-header-text::before,
+.form .grid-header-text::before{
+  content:"" !important;
+  position:absolute !important;
+  left:0 !important;
+  top:50% !important;
+  transform:translateY(-50%) !important;
+  width:9px !important;
+  height:9px !important;
+  border-radius:50% !important;
+  background:var(--gradient-brand) !important;
+  box-shadow:0 0 0 4px var(--primary-soft) !important;
+}
+
+.form .panel-header-text span,
+.form .grid-header-text span{
+  color:var(--text-primary) !important;
+  font-size:15.5px !important;
+  font-weight:700 !important;
+  letter-spacing:-.01em !important;
+}
+
+.form a.collapse-vertical{
+  display:none !important;
+}
+
+
+/* ============================================================
+   8. CARD BODY
+   ============================================================ */
+
+.form .panel-body.STYLE-VIEW-padding,
+.form .grid-body.STYLE-VIEW-padding{
+  padding:26px !important;
+  background:#FFFFFF !important;
+}
+
+.form .panel-body-t,
+.form .panel-body-b,
+.form .panel-body-t-l,
+.form .panel-body-t-c,
+.form .panel-body-t-r,
+.form .panel-body-b-l,
+.form .panel-body-b-c,
+.form .panel-body-b-r,
+.form .panel-body-m-l,
+.form .panel-body-m-r{
+  display:none !important;
+}
+
+
+/* ============================================================
+   9. LABELS
+   ============================================================ */
+
+.form span.SourceCode-Forms-Controls-Web-Label{
+  color:var(--text-label) !important;
+  font-size:11px !important;
+  font-weight:700 !important;
+  line-height:1.4 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.06em !important;
+  margin-bottom:7px !important;
+  display:inline-block !important;
+}
+
+.form span.SourceCode-Forms-Controls-Web-DataLabel{
+  color:var(--text-primary) !important;
+  font-size:14px !important;
+  font-weight:500 !important;
+  background:transparent !important;
+}
+
+
+/* ============================================================
+   10. GRID LAYOUT (form field table)
+   ============================================================ */
+
+.form .root-table.Grid-Layout{
+  width:100% !important;
+  gap:20px 26px !important;
+}
+
+.form .line-break.clearFloatFix{
+  display:none !important;
+}
+
+
+/* ============================================================
+   11. REMOVE K2 9-SLICE BORDERS
+   ============================================================ */
+
+.form .input-control-t,
+.form .input-control-b,
+.form .input-control-t-l,
+.form .input-control-t-c,
+.form .input-control-t-r,
+.form .input-control-b-l,
+.form .input-control-b-c,
+.form .input-control-b-r,
+.form .input-control-m-l,
+.form .input-control-m-r{
+  display:none !important;
+}
+
+
+/* ============================================================
+   12. TEXT INPUTS — styled as soft "info tiles"
+   (most fields in this form are readonly reference data)
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox{
+  width:100% !important;
+  min-height:42px !important;
+  padding:11px 14px !important;
+  box-sizing:border-box !important;
+  border:1px solid transparent !important;
+  border-radius:var(--radius-input) !important;
+  background:var(--surface-tile) !important;
+  box-shadow:var(--shadow-tile) !important;
+  color:var(--text-primary) !important;
+  font-size:13.5px !important;
+  font-weight:600 !important;
+  outline:none !important;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast),
+    background-color var(--transition-fast) !important;
+}
+
+
+/* ============================================================
+   13. TEXT INPUT HOVER
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:hover{
+  background:var(--surface-tile-hover) !important;
+  border-color:var(--primary-border) !important;
+}
+
+
+/* ============================================================
+   14. TEXT INPUT FOCUS
+   ============================================================ */
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:focus{
+  background:#FFFFFF !important;
+  border-color:var(--border-focus) !important;
+  box-shadow:var(--shadow-focus) !important;
+  outline:none !important;
+}
+
+
+/* ============================================================
+   15. READ-ONLY FIELDS (this form's Customer Information block)
+   ============================================================ */
+
+.form input[readonly],
+.form input.readonly,
+.form textarea[readonly],
+.form .input-control.read-only,
+.form .ui-lookupbox-disabled{
+  background:var(--surface-tile) !important;
+  color:var(--text-primary) !important;
+  border:1px solid transparent !important;
+  box-shadow:var(--shadow-tile) !important;
+  cursor:default !important;
+  font-weight:600 !important;
+}
+
+.form input[readonly]:hover{
+  background:var(--surface-tile-hover) !important;
+}
+
+
+/* ============================================================
+   16. TEXTAREA / TEXT-INPUT CONTAINER
+   ============================================================ */
+
+.form .input-control.text-input textarea{
+  width:100% !important;
+  min-height:92px !important;
+  box-sizing:border-box !important;
+  padding:12px 14px !important;
+  border:none !important;
+  outline:none !important;
+  background:transparent !important;
+  color:var(--text-primary) !important;
+  font-size:13.5px !important;
+  resize:vertical !important;
+}
+
+.form .input-control.text-input{
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-input) !important;
+  background:#FFFFFF !important;
+  box-shadow:var(--shadow-tile) !important;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast) !important;
+}
+
+.form .input-control.text-input:hover{
+  border-color:var(--border-hover) !important;
+}
+
+.form .input-control.text-input:focus-within{
+  border-color:var(--border-focus) !important;
+  box-shadow:var(--shadow-focus) !important;
+  background:#FFFFFF !important;
+}
+
+
+/* ============================================================
+   17. DROPDOWNS (grid filter selects etc.)
+   ============================================================ */
+
+.form .input-control.select-box,
+.form .input-control.dropdown-box{
+  position:relative !important;
+  min-height:38px !important;
+  box-sizing:border-box !important;
+  padding:0 34px 0 0 !important;
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-input) !important;
+  background:#FFFFFF !important;
+  cursor:pointer !important;
+  overflow:hidden !important;
+  transition:
+    border-color var(--transition-fast),
+    box-shadow var(--transition-fast) !important;
+}
+
+.form .input-control.select-box:hover,
+.form .input-control.dropdown-box:hover{
+  border-color:var(--border-hover) !important;
+}
+
+.form .input-control.select-box:focus-within,
+.form .input-control.dropdown-box:focus-within{
+  border-color:var(--border-focus) !important;
+  box-shadow:var(--shadow-focus) !important;
+}
+
+.form .input-control.select-box *,
+.form .input-control.dropdown-box *{
+  box-shadow:none !important;
+  border:none !important;
+  background-color:transparent !important;
+  background-image:none !important;
+}
+
+.form .input-control.select-box .input-control-wrapper > a,
+.form .input-control.dropdown-box .input-control-wrapper > a{
+  display:flex !important;
+  align-items:center !important;
+  height:38px !important;
+  box-sizing:border-box !important;
+  padding:0 12px !important;
+  color:var(--text-primary) !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+}
+
+.form .input-control-watermark{
+  color:#98A2B3 !important;
+  padding-left:12px !important;
+  font-style:normal !important;
+}
+
+
+/* ============================================================
+   18. "PLEASE TAKE ACTION" RADIO / SELECTION LIST
+   ============================================================ */
+
+.form span[name="Action_Label"]{
+  display:inline-block !important;
+  color:var(--text-primary) !important;
+  font-size:14px !important;
+  font-weight:700 !important;
+  margin-bottom:12px !important;
+}
+
+.form .input-control.text-input.control-group-container{
+  border:1px dashed var(--border) !important;
+  border-radius:var(--radius-input) !important;
+  background:var(--surface-tile) !important;
+  box-shadow:none !important;
+  padding:4px !important;
+}
+
+.form .input-control-wrapper.multi-select-outer-panel{
+  min-height:44px !important;
+  display:flex !important;
+  flex-wrap:wrap !important;
+  align-items:center !important;
+  gap:10px !important;
+  padding:10px !important;
+}
+
+.form .input-control-wrapper.multi-select-outer-panel .input-control-watermark{
+  color:var(--text-muted) !important;
+  font-size:13px !important;
+  font-weight:500 !important;
+  padding-left:4px !important;
+}
+
+/* best-effort styling for individual radio choices once populated */
+.form .input-control-wrapper.multi-select-outer-panel label,
+.form .input-control-wrapper.multi-select-outer-panel .item,
+.form .input-control-wrapper.multi-select-outer-panel .list-item{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:8px !important;
+  padding:9px 16px !important;
+  border-radius:var(--radius-button) !important;
+  border:1px solid var(--border) !important;
+  background:#FFFFFF !important;
+  font-size:13px !important;
+  font-weight:600 !important;
+  color:var(--text-secondary) !important;
+  cursor:pointer !important;
+  transition:
+    border-color var(--transition-fast),
+    color var(--transition-fast),
+    background-color var(--transition-fast) !important;
+}
+
+.form .input-control-wrapper.multi-select-outer-panel label:hover{
+  border-color:var(--primary-border) !important;
+  color:var(--primary) !important;
+}
+
+.form .svg-radio-btn-circle{
+  stroke:var(--border-hover) !important;
+}
+
+.form .svg-radio-btn-checked{
+  fill:var(--primary) !important;
+}
+
+
+/* ============================================================
+   19. GRID TOOLBAR
+   ============================================================ */
+
+.form .grid-toolbars{
+  padding:14px 24px !important;
+  background:#FFFFFF !important;
+  border:none !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.form a.toolbar-button{
+  text-decoration:none !important;
+  padding:8px 12px !important;
+  border-radius:var(--radius-button) !important;
+  transition:
+    background-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+  --toolbar-button-icon-base-color:var(--primary);
+  --toolbar-button-icon-highlight-color:var(--primary);
+  --toolbar-button-icon-destructive-color:var(--danger);
+  --toolbar-button-icon-base-secondary-color:#B9C0F5;
+}
+
+.form a.toolbar-button:hover{
+  background:var(--primary-soft) !important;
+  transform:translateY(-1px) !important;
+}
+
+.form a.toolbar-button .button-text{
+  color:var(--primary) !important;
+  font-size:12.5px !important;
+  font-weight:700 !important;
+}
+
+.form a.toolbar-button.delete{
+  --toolbar-button-icon-base-color:var(--danger);
+}
+
+.form a.toolbar-button.delete .button-text{
+  color:var(--danger) !important;
+}
+
+.form a.toolbar-button.delete:hover{
+  background:#FDEEEE !important;
+}
+
+
+/* ============================================================
+   20. GRID TABLE / COLUMN HEADERS
+   ============================================================ */
+
+.form .grid-body-content,
+.form .grid-body-content-wrapper,
+.form .scroll-wrapper{
+  overflow-x:hidden !important;
+  overflow-y:visible !important;
+}
+
+.form .scroll-wrapper > table.grid-content-table,
+.form table.grid-column-header-table,
+.form table.grid-edit-templates-table,
+.form table.grid-display-templates-table,
+.form table.grid-summary-content-table{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  table-layout:fixed !important;
+}
+
+.form .grid-column-header-table{
+  background:var(--surface-tile) !important;
+  border:none !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.form .grid-column-header-text{
+  color:var(--text-secondary) !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.07em !important;
+  padding:13px 14px !important;
+}
+
+.form .grid-column-header-divider{
+  display:none !important;
+}
+
+
+/* ============================================================
+   21. GRID CELLS / ROWS
+   ============================================================ */
+
+.form .grid-content-cell{
+  color:var(--text-primary) !important;
+  background:#FFFFFF !important;
+  border:none !important;
+  border-bottom:1px solid #EEF0F7 !important;
+  padding:12px 14px !important;
+  vertical-align:middle !important;
+  transition:background-color var(--transition-fast) !important;
+}
+
+.form .zebra-stripes tr:nth-child(even) td{
+  background:#FAFBFF !important;
+}
+
+.form .grid-content-table tr:hover td{
+  background:var(--primary-soft) !important;
+}
+
+.form tr.edit-template-row td,
+.form .grid-content-table tr.selected td{
+  background:var(--primary-soft) !important;
+}
+
+.form tr.empty-grid td.empty-grid{
+  padding:28px !important;
+  text-align:center !important;
+  color:var(--text-muted) !important;
+  font-size:13px !important;
+  font-style:normal !important;
+  background:var(--surface-tile) !important;
+}
+
+
+/* ============================================================
+   22. GRID EDIT MODE
+   ============================================================ */
+
+.form .grid-content-cell.edit-mode{
+  padding:8px !important;
+  background:var(--surface-tile) !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.form .grid-content-cell.edit-mode .grid-content-cell-wrapper{
+  width:100% !important;
+}
+
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode textarea,
+.form .grid-content-cell.edit-mode .input-control{
+  width:100% !important;
+  max-width:100% !important;
+  min-width:0 !important;
+  box-sizing:border-box !important;
+}
+
+.form .grid-content-cell.edit-mode input,
+.form .grid-content-cell.edit-mode .input-control-wrapper > a{
+  padding:9px 11px !important;
+  font-size:12.5px !important;
+}
+
+.form .grid-content-cell.edit-mode .input-control{
+  border:1px solid var(--border) !important;
+  border-radius:8px !important;
+  background:#FFFFFF !important;
+}
+
+
+/* ============================================================
+   23. FILE / ATTACHMENT CELLS
+   ("Customer Attachment" column in Required Supporting Documents)
+   ============================================================ */
+
+.form .grid-content-cell .file-wrapper,
+.form .grid-content-cell .file-table{
+  width:100% !important;
+  max-width:100% !important;
+  overflow:hidden !important;
+}
+
+.form .grid-content-cell .file-tn-cell{
+  display:none !important;
+}
+
+.form .file-wrapper .file-watermark{
+  display:inline-flex !important;
+  align-items:center !important;
+  gap:6px !important;
+  max-width:100% !important;
+  padding:7px 12px !important;
+  border:1px dashed var(--primary-border) !important;
+  border-radius:var(--radius-button) !important;
+  background:var(--primary-soft) !important;
+  color:var(--primary) !important;
+  font-size:11px !important;
+  font-weight:700 !important;
+  white-space:nowrap !important;
+  overflow:hidden !important;
+  text-overflow:ellipsis !important;
+  transition:
+    background-color var(--transition-fast),
+    border-color var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form .file-wrapper .file-watermark::before{
+  content:"📎" !important;
+  font-size:11px !important;
+}
+
+.form .file-wrapper .file-watermark:hover{
+  background:#E3E7FF !important;
+  border-color:var(--primary) !important;
+  transform:translateY(-1px) !important;
+}
+
+.form span.SourceCode-Forms-Controls-Web-DataLabel.empty::before{
+  content:"—" !important;
+  color:var(--text-muted) !important;
+}
+
+
+/* ============================================================
+   24. BUTTONS (pill / gradient)
+   ============================================================ */
+
+.form a.SourceCode-Forms-Controls-Web-Button{
+  min-height:44px !important;
+  padding:12px 26px !important;
+  border:none !important;
+  border-radius:var(--radius-button) !important;
+  background:var(--gradient-brand) !important;
+  background-size:160% 160% !important;
+  color:#FFFFFF !important;
+  font-size:13.5px !important;
+  font-weight:700 !important;
+  letter-spacing:.01em !important;
+  text-decoration:none !important;
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  box-sizing:border-box !important;
+  cursor:pointer !important;
+  box-shadow:var(--shadow-button) !important;
+  transition:
+    background-position var(--transition),
+    box-shadow var(--transition-fast),
+    transform var(--transition-fast) !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button span{
+  color:#FFFFFF !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:hover{
+  background-position:100% 0 !important;
+  transform:translateY(-2px) !important;
+  box-shadow:
+    0 10px 24px rgba(79,70,229,.34) !important;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:active{
+  transform:translateY(0) scale(.98) !important;
+}
+
+
+/* ============================================================
+   25. HEADER — LOGO LEFT / TITLE + SUBTITLE RIGHT
+   (row1 = picture, row2 = title label, row3 = subtitle label)
+   ============================================================ */
+
+.form{
+  display:grid !important;
+  grid-template-columns:auto 1fr !important;
+  column-gap:30px !important;
+  row-gap:0 !important;
+}
+
+.form > .row:nth-child(n+4){
+  grid-column:1 / -1 !important;
+}
+
+.form > .row:nth-child(1){
+  grid-column:1 !important;
+  grid-row:1 / 3 !important;
+  display:flex !important;
+  align-items:center !important;
+  padding:26px 0 26px 32px !important;
+  margin:0 !important;
+}
+
+.form > .row:nth-child(1) .formcontrol{
+  margin:0 !important;
+  width:auto !important;
+}
+
+.form img.picture-control-inline{
+  width:auto !important;
+  max-height:56px !important;
+  margin:0 !important;
+  border-radius:12px !important;
+}
+
+.form > .row:nth-child(2){
+  grid-column:2 !important;
+  grid-row:1 !important;
+  align-self:end !important;
+  padding:26px 32px 4px 30px !important;
+  margin:0 !important;
+  border-left:1px solid var(--border) !important;
+}
+
+.form > .row:nth-child(3){
+  grid-column:2 !important;
+  grid-row:2 !important;
+  align-self:start !important;
+  padding:0 32px 26px 30px !important;
+  margin:0 !important;
+  border-left:1px solid var(--border) !important;
+}
+
+.form > .row:nth-child(2) .formcontrol,
+.form > .row:nth-child(3) .formcontrol{
+  margin:0 !important;
+  width:auto !important;
+}
+
+.form::before{
+  content:"" !important;
+  grid-column:1 / -1 !important;
+  grid-row:1 / 3 !important;
+  background:var(--surface-card) !important;
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-card) !important;
+  box-shadow:var(--shadow-card) !important;
+}
+
+/* thin brand strip along the very top of the header card */
+.form::after{
+  content:"" !important;
+  grid-column:1 / -1 !important;
+  grid-row:1 !important;
+  align-self:start !important;
+  height:4px !important;
+  margin-top:0 !important;
+  background:var(--gradient-brand) !important;
+  border-radius:var(--radius-card) var(--radius-card) 0 0 !important;
+}
+
+/* Title row (row2) → span[name="Label"] */
+.form > .row:nth-child(2) span[name="Label"]{
+  display:block !important;
+  color:var(--text-primary) !important;
+  font-family:"Poppins","Inter",sans-serif !important;
+  font-size:23px !important;
+  font-weight:800 !important;
+  letter-spacing:-.01em !important;
+  line-height:1.3 !important;
+}
+
+/* Subtitle row (row3) → span[name="Label1"] */
+.form > .row:nth-child(3) span[name="Label1"]{
+  display:block !important;
+  color:var(--text-secondary) !important;
+  font-size:13px !important;
+  font-weight:500 !important;
+  line-height:1.5 !important;
+}
+
+
+/* ============================================================
+   26. SCROLLBAR
+   ============================================================ */
+
+.form ::-webkit-scrollbar{
+  width:7px !important;
+  height:7px !important;
+}
+
+.form ::-webkit-scrollbar-track{
+  background:transparent !important;
+}
+
+.form ::-webkit-scrollbar-thumb{
+  background:#C9CEE8 !important;
+  border-radius:999px !important;
+}
+
+.form ::-webkit-scrollbar-thumb:hover{
+  background:#9AA3D6 !important;
+}
