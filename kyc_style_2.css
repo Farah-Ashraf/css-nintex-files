@@ -1,0 +1,780 @@
+/* ==========================================================================
+   KYC Form – Modern Professional Theme (Nintex Forms style profile)
+   Every selector is scoped under .form
+   Palette: Navy #12305a | Teal #0f766e | Slate text #1e293b | Canvas #f1f5f9
+   ========================================================================== */
+
+/* ---------- Design tokens ---------- */
+.form {
+  --kyc-navy: #12305a;
+  --kyc-navy-dark: #0c2244;
+  --kyc-accent: #0f766e;
+  --kyc-accent-dark: #0b5c56;
+  --kyc-text: #1e293b;
+  --kyc-muted: #64748b;
+  --kyc-border: #d5dde8;
+  --kyc-canvas: #f1f5f9;
+  --kyc-surface: #ffffff;
+  --kyc-row-alt: #f8fafc;
+  --kyc-row-hover: #eaf2f8;
+  --kyc-disabled-bg: #f1f5f9;
+  --kyc-radius: 10px;
+  --kyc-radius-sm: 6px;
+  --kyc-shadow: 0 1px 2px rgba(16, 42, 84, 0.06), 0 4px 14px rgba(16, 42, 84, 0.06);
+  --view-expansion-icon-base-color: #ffffff;
+
+  font-family: "Poppins", "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--kyc-text);
+  background: var(--kyc-canvas);
+  padding: 16px;
+  box-sizing: border-box;
+}
+
+.form *,
+.form *::before,
+.form *::after {
+  box-sizing: border-box;
+}
+
+.form .row {
+  margin: 0 0 4px 0;
+}
+
+/* ---------- Section panels ---------- */
+.form .innerpanel .panel,
+.form .innerpanel .grid {
+  background: var(--kyc-surface);
+  border: 1px solid var(--kyc-border);
+  border-radius: var(--kyc-radius);
+  box-shadow: var(--kyc-shadow);
+  overflow: hidden;
+}
+
+/* Section header bar */
+.form .panel-header,
+.form .grid-header {
+  background: linear-gradient(90deg, var(--kyc-navy) 0%, var(--kyc-navy-dark) 100%) !important;
+  border: 0 !important;
+  border-left: 4px solid var(--kyc-accent) !important;
+  min-height: 42px;
+}
+
+.form .panel-header-l,
+.form .panel-header-c,
+.form .panel-header-r,
+.form .panel-header-wrapper,
+.form .grid-header-wrapper {
+  background: transparent !important;
+  border: 0 !important;
+}
+
+.form .panel-header-wrapper,
+.form .grid-header-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 14px;
+  min-height: 42px;
+}
+
+.form .panel-header-text,
+.form .grid-header-text {
+  color: #ffffff !important;
+  font-size: 15px !important;
+  font-weight: 600 !important;
+  letter-spacing: 0.2px;
+  text-transform: none;
+  padding: 0 !important;
+}
+
+.form .panel-header-text span,
+.form .grid-header-text span {
+  color: #ffffff !important;
+}
+
+/* Collapse / expand arrow */
+.form .panel-header-controls a,
+.form .grid-header-controls a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  transition: background 0.2s ease;
+}
+
+.form .panel-header-controls a:hover,
+.form .grid-header-controls a:hover {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.form .panel-header-controls svg path,
+.form .grid-header-controls svg path {
+  stroke: #ffffff;
+}
+
+/* Panel body */
+.form .panel-body,
+.form .panel-body-m,
+.form .panel-body-m-c,
+.form .panel-body-wrapper {
+  background: var(--kyc-surface) !important;
+  border: 0 !important;
+}
+
+.form .panel-body-wrapper {
+  padding: 18px 20px 12px 20px;
+}
+
+/* ---------- Grid layout tables (label + control cells) ---------- */
+.form .Grid-Layout {
+  column-gap: 32px;
+  row-gap: 6px;
+}
+
+.form .editor-cell {
+  padding: 4px 0 10px 0;
+  min-width: 0;
+}
+
+/* ---------- Labels ---------- */
+.form .SourceCode-Forms-Controls-Web-Label,
+.form .form-field-label {
+  display: inline-block;
+  margin-bottom: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--kyc-navy);
+  letter-spacing: 0.1px;
+}
+
+.form .SourceCode-Forms-Controls-Web-Label.disabled,
+.form .sfc-SFCLabel-disabled {
+  color: var(--kyc-muted) !important;
+  opacity: 1 !important;
+}
+
+/* ---------- Text boxes ---------- */
+.form input.SourceCode-Forms-Controls-Web-TextBox,
+.form input.input-control,
+.form textarea.input-control,
+.form .input-control-wrapper input[type="text"] {
+  width: 100%;
+  height: 40px;
+  padding: 8px 12px;
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--kyc-text);
+  background: var(--kyc-surface);
+  border: 1px solid var(--kyc-border) !important;
+  border-radius: var(--kyc-radius-sm);
+  outline: none;
+  box-shadow: inset 0 1px 1px rgba(16, 42, 84, 0.04);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form input.SourceCode-Forms-Controls-Web-TextBox.watermark,
+.form input.input-control::placeholder {
+  color: #94a3b8;
+}
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:hover:not(:disabled),
+.form input.input-control:hover:not(:disabled) {
+  border-color: #9fb3cc !important;
+}
+
+.form input.SourceCode-Forms-Controls-Web-TextBox:focus,
+.form input.input-control:focus,
+.form .input-control-wrapper input[type="text"]:focus {
+  border-color: var(--kyc-accent) !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18);
+}
+
+/* Read-only / disabled fields: clear but calm */
+.form input.SourceCode-Forms-Controls-Web-TextBox:disabled,
+.form input.sfc-SFCTextBox-disabled,
+.form .input-control-wrapper input[type="text"]:disabled {
+  background: var(--kyc-disabled-bg) !important;
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155;
+  border-color: #e2e8f0 !important;
+  box-shadow: none;
+  cursor: not-allowed;
+  opacity: 1;
+}
+
+/* Date picker / dropdown wrappers */
+.form .input-control.select-box,
+.form .input-control.text-input {
+  border-radius: var(--kyc-radius-sm);
+}
+
+.form .calendar-control .input-control-buttons a,
+.form .dropdown-box .input-control-buttons a {
+  border-radius: 0 var(--kyc-radius-sm) var(--kyc-radius-sm) 0;
+}
+
+.form .calendar-control.disabled {
+  opacity: 1;
+}
+
+.form .calendar-control.disabled .input-control-wrapper input {
+  background: var(--kyc-disabled-bg) !important;
+  color: #334155 !important;
+  -webkit-text-fill-color: #334155;
+}
+
+/* ---------- Buttons ---------- */
+.form a.SourceCode-Forms-Controls-Web-Button,
+.form a.toolbar-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 40px;
+  padding: 0 22px;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  background: var(--kyc-accent) !important;
+  border: 1px solid var(--kyc-accent) !important;
+  border-radius: var(--kyc-radius-sm);
+  box-shadow: 0 1px 2px rgba(15, 118, 110, 0.25);
+  cursor: pointer;
+  transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.05s ease;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:hover,
+.form a.toolbar-button:hover {
+  background: var(--kyc-accent-dark) !important;
+  border-color: var(--kyc-accent-dark) !important;
+  box-shadow: 0 4px 10px rgba(15, 118, 110, 0.3);
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:active,
+.form a.toolbar-button:active {
+  transform: translateY(1px);
+  box-shadow: none;
+}
+
+.form a.SourceCode-Forms-Controls-Web-Button:focus-visible,
+.form a.toolbar-button:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 2px;
+}
+
+/* Search button aligns with the input row */
+.form a[name="cust_id_submit_button"] {
+  min-width: 160px;
+}
+
+/* Main submit button: navy to signal the final action */
+.form a[name="Submit_Button"],
+.form a[name="Submit_Action_Button"] {
+  min-width: 180px;
+  min-height: 44px;
+  background: var(--kyc-navy) !important;
+  border-color: var(--kyc-navy) !important;
+  box-shadow: 0 2px 6px rgba(18, 48, 90, 0.3);
+}
+
+.form a[name="Submit_Button"]:hover,
+.form a[name="Submit_Action_Button"]:hover {
+  background: var(--kyc-navy-dark) !important;
+  border-color: var(--kyc-navy-dark) !important;
+}
+
+.form .formcontrol .innerpanel {
+  padding: 8px 0 0 0;
+}
+
+/* Disabled buttons */
+.form a.SourceCode-Forms-Controls-Web-Button.disabled {
+  background: #cbd5e1 !important;
+  border-color: #cbd5e1 !important;
+  color: #64748b !important;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+/* ---------- Data grid (Customer Documents) ---------- */
+.form .grid-body {
+  background: var(--kyc-surface);
+}
+
+.form .grid-column-headers,
+.form .grid-column-headers-wrapper {
+  background: #eef2f7 !important;
+  border: 0 !important;
+}
+
+.form .grid-column-header-table td {
+  border-right: 1px solid #dde5ef !important;
+  border-bottom: 2px solid var(--kyc-border) !important;
+  background: #eef2f7 !important;
+}
+
+.form .grid-column-header-text {
+  padding: 10px 10px !important;
+  font-size: 12.5px !important;
+  font-weight: 600 !important;
+  color: var(--kyc-navy) !important;
+  text-transform: none !important;
+  letter-spacing: 0.2px;
+}
+
+.form .grid-column-header-cell:hover {
+  background: #e3eaf3;
+}
+
+/* Rows */
+.form .grid-content-table {
+  border-collapse: collapse;
+}
+
+.form .grid-content-table td {
+  padding: 0;
+  border: 0 !important;
+  border-bottom: 1px solid #e8edf3 !important;
+  background: transparent;
+  color: var(--kyc-text);
+  font-size: 13.5px;
+}
+
+.form .grid-content-table tr:nth-child(even) td {
+  background: var(--kyc-row-alt);
+}
+
+.form .grid-content-table tr:hover td {
+  background: var(--kyc-row-hover);
+}
+
+.form .grid-content-table tr.selected td,
+.form .grid-content-table tr.selected:hover td {
+  background: #d9ece9 !important;
+}
+
+.form .grid-content-cell {
+  padding: 12px 10px;
+}
+
+.form .grid-content-table td.empty-grid,
+.form .grid-content-table .empty-grid .grid-content-cell {
+  color: var(--kyc-muted);
+  font-style: italic;
+  text-align: center;
+  padding: 18px;
+}
+
+/* Status cell: show "Verified" as a badge */
+.form .grid-content-table td[data-options*='"Verified"'] .runtime-list-item {
+  display: inline-block;
+  padding: 2px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #0b5c3b;
+  background: #dcfce7;
+  border: 1px solid #a7e3bd;
+  border-radius: 999px;
+}
+
+.form .grid-content-table td[data-options*='"Rejected"'] .runtime-list-item,
+.form .grid-content-table td[data-options*='"Expired"'] .runtime-list-item {
+  display: inline-block;
+  padding: 2px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #9b1c1c;
+  background: #fee2e2;
+  border: 1px solid #f5b5b5;
+  border-radius: 999px;
+}
+
+.form .grid-content-table td[data-options*='"Pending"'] .runtime-list-item {
+  display: inline-block;
+  padding: 2px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #8a5a00;
+  background: #fef3c7;
+  border: 1px solid #f3d98b;
+  border-radius: 999px;
+}
+
+/* Hyperlinks inside the grid */
+.form .hyperlink,
+.form a.Hyperlink {
+  color: var(--kyc-accent) !important;
+  font-weight: 500;
+  text-decoration: none !important;
+  border-bottom: 1px solid transparent;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+
+.form .hyperlink:hover,
+.form a.Hyperlink:hover {
+  color: var(--kyc-accent-dark) !important;
+  border-bottom-color: var(--kyc-accent-dark);
+}
+
+/* Grid toolbar / quick search (when visible) */
+.form .grid-toolbars .toolbar,
+.form .toolbar-wrapper {
+  background: #f8fafc;
+  border-bottom: 1px solid var(--kyc-border);
+  padding: 6px 10px;
+}
+
+/* ---------- File attachment control ---------- */
+.form .file-wrapper {
+  width: 100%;
+  background: #f8fafc;
+  border: 2px dashed #9fb3cc !important;
+  border-radius: var(--kyc-radius);
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.form .file-wrapper:hover,
+.form .file-wrapper:focus-within {
+  background: #eef7f6;
+  border-color: var(--kyc-accent) !important;
+}
+
+.form .file-watermark {
+  color: var(--kyc-muted);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.form .file-info {
+  color: var(--kyc-navy);
+  font-weight: 500;
+}
+
+.form .file-delete-img {
+  cursor: pointer;
+  border-radius: 50%;
+  transition: background 0.15s ease;
+}
+
+.form .file-delete-img:hover {
+  background: #fee2e2;
+}
+
+/* ---------- Validation / required ---------- */
+.form .form-field.required .form-field-label::after {
+  content: " *";
+  color: #dc2626;
+}
+
+.form .input-control.error input,
+.form input.error,
+.form .validation-error {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 3px rgba(220, 38, 38, 0.12);
+}
+
+/* ---------- Radio buttons (Actions panel) ---------- */
+.form .control-group-container .input-control-m-c {
+  border-color: var(--kyc-border) !important;
+  border-radius: var(--kyc-radius-sm);
+}
+
+.form .svg-radio-btn-circle {
+  stroke: var(--kyc-navy);
+}
+
+.form .svg-radio-btn-checked {
+  fill: var(--kyc-accent);
+}
+
+/* ---------- Scrollbars ---------- */
+.form .scroll-wrapper::-webkit-scrollbar,
+.form .panel::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.form .scroll-wrapper::-webkit-scrollbar-thumb,
+.form .panel::-webkit-scrollbar-thumb {
+  background: #b6c4d6;
+  border-radius: 8px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 800px) {
+  .form {
+    padding: 8px;
+  }
+
+  .form .Grid-Layout {
+    grid-template-columns: 1fr !important;
+  }
+
+  .form .panel-body-wrapper {
+    padding: 14px 12px 8px 12px;
+  }
+
+  .form a.SourceCode-Forms-Controls-Web-Button {
+    width: 100%;
+  }
+}
+
+/* ---------- Respect reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+  .form * {
+    transition: none !important;
+  }
+}
+
+
+/* ==========================================================================
+   FIX: make sure text boxes (e.g. the Comment box) get the rounded style
+   ========================================================================== */
+.form .row input.SFC.SourceCode-Forms-Controls-Web-TextBox {
+  height: 42px !important;
+  border: 1px solid var(--kyc-border) !important;
+  border-radius: var(--kyc-radius-sm) !important;
+  padding: 8px 12px !important;
+  background: var(--kyc-surface) !important;
+}
+
+.form .row input.SFC.SourceCode-Forms-Controls-Web-TextBox:focus {
+  border-color: var(--kyc-accent) !important;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.18) !important;
+}
+
+/* ==========================================================================
+   RADIO BUTTON LIST (Actions panel) – selectable option cards
+   ========================================================================== */
+.form .control-group-container .input-control-m-c {
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.form .multi-select-outer-panel {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 12px;
+  height: auto !important;
+  min-height: 0;
+  padding: 4px 0 !important;
+  background: transparent !important;
+  border: 0 !important;
+}
+
+/* Each option */
+.form .multi-select-outer-panel > *:not(.input-control-watermark):not(.accessibility-label) {
+  display: flex !important;
+  align-items: center;
+  gap: 10px;
+  flex: 1 1 260px;
+  max-width: 420px;
+  min-height: 48px;
+  padding: 10px 16px !important;
+  margin: 0 !important;
+  background: var(--kyc-surface);
+  border: 1.5px solid var(--kyc-border);
+  border-radius: var(--kyc-radius);
+  cursor: pointer;
+  color: var(--kyc-text);
+  font-size: 14px;
+  font-weight: 500;
+  white-space: normal !important;      /* show full text instead of "Proce…" */
+  overflow: visible !important;
+  text-overflow: clip !important;
+  transition: border-color 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form .multi-select-outer-panel > *:not(.input-control-watermark):not(.accessibility-label) * {
+  white-space: normal !important;
+  text-overflow: clip !important;
+  overflow: visible !important;
+}
+
+/* Hover */
+.form .multi-select-outer-panel > *:not(.input-control-watermark):not(.accessibility-label):hover {
+  border-color: var(--kyc-accent);
+  background: #f2faf9;
+  box-shadow: 0 2px 8px rgba(15, 118, 110, 0.12);
+}
+
+/* Selected option (covers native checked input and Nintex "selected" classes) */
+.form .multi-select-outer-panel > *:has(input:checked),
+.form .multi-select-outer-panel > .selected,
+.form .multi-select-outer-panel > .checked,
+.form .multi-select-outer-panel > [aria-checked="true"] {
+  border-color: var(--kyc-accent);
+  background: #e6f4f2;
+  box-shadow: 0 0 0 3px rgba(15, 118, 110, 0.15);
+  color: var(--kyc-navy);
+  font-weight: 600;
+}
+
+/* Radio circle */
+.form .multi-select-outer-panel svg {
+  flex: 0 0 22px;
+  width: 22px;
+  height: 22px;
+}
+
+.form .svg-radio-btn-circle {
+  stroke: #94a3b8;
+  stroke-width: 1.5;
+  fill: #ffffff;
+  transition: stroke 0.15s ease;
+}
+
+.form .multi-select-outer-panel > *:hover .svg-radio-btn-circle {
+  stroke: var(--kyc-accent);
+}
+
+.form .svg-radio-btn-checked {
+  fill: var(--kyc-accent);
+}
+
+/* Native radio fallback (if the control renders real inputs) */
+.form .multi-select-outer-panel input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  width: 20px;
+  height: 20px;
+  margin: 0;
+  border: 2px solid #94a3b8;
+  border-radius: 50%;
+  background: #fff;
+  cursor: pointer;
+  flex: 0 0 20px;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.form .multi-select-outer-panel input[type="radio"]:checked {
+  border-color: var(--kyc-accent);
+  box-shadow: inset 0 0 0 4px #fff, inset 0 0 0 10px var(--kyc-accent);
+}
+
+.form .multi-select-outer-panel input[type="radio"]:focus-visible {
+  outline: 3px solid rgba(15, 118, 110, 0.35);
+  outline-offset: 2px;
+}
+
+/* Disabled options */
+.form .multi-select-outer-panel > .disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+  background: var(--kyc-disabled-bg);
+}
+
+
+/* ==========================================================================
+   PAGE HEADER BANNER (logo + heading + description)
+
+   Designer setup – add a Table control at the very top of the form and name
+   the controls exactly as below:
+
+     Table ............ Header_Table   (2 columns x 2 rows)
+     Image ............ Logo_Image      (merge column 1, rows 1-2)
+     Label ............ Form_Title      (column 2, row 1)
+     Label ............ Form_Description (column 2, row 2)
+   ========================================================================== */
+.form [name="Header_Table"] {
+  display: grid !important;
+  grid-template-columns: auto 1fr !important;
+  grid-template-rows: auto auto !important;
+  column-gap: 24px !important;
+  row-gap: 2px !important;
+  align-items: center;
+  margin: 0 0 14px 0;
+  padding: 20px 28px;
+  background:
+    linear-gradient(135deg, var(--kyc-navy) 0%, var(--kyc-navy-dark) 100%);
+  border-radius: var(--kyc-radius);
+  border-bottom: 4px solid var(--kyc-accent);
+  box-shadow: var(--kyc-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+/* subtle decorative circle on the right */
+.form [name="Header_Table"]::after {
+  content: "";
+  position: absolute;
+  right: -60px;
+  top: -80px;
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.05);
+  pointer-events: none;
+}
+
+.form [name="Header_Table"] .editor-cell {
+  padding: 0 !important;
+  z-index: 1;
+}
+
+/* Logo tile spans both rows */
+.form [name="Header_Table"] .editor-cell:first-child {
+  grid-row: 1 / span 2 !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 16px !important;
+  background: #ffffff;
+  border-radius: var(--kyc-radius);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.18);
+}
+
+.form [name="Logo_Image"],
+.form [name="Logo_Image"] img {
+  display: block;
+  max-height: 64px;
+  max-width: 180px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Heading */
+.form [name="Form_Title"] {
+  display: block;
+  margin: 0 !important;
+  font-size: 26px !important;
+  font-weight: 700 !important;
+  line-height: 1.25;
+  letter-spacing: 0.2px;
+  color: #ffffff !important;
+}
+
+/* Description */
+.form [name="Form_Description"] {
+  display: block;
+  max-width: 760px;
+  margin: 4px 0 0 0 !important;
+  font-size: 14px !important;
+  font-weight: 400 !important;
+  line-height: 1.6;
+  color: #cfdcf0 !important;
+}
+
+@media (max-width: 800px) {
+  .form [name="Header_Table"] {
+    grid-template-columns: 1fr !important;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .form [name="Header_Table"] .editor-cell:first-child {
+    grid-row: auto !important;
+    margin: 0 auto 10px auto;
+  }
+
+  .form [name="Form_Title"] {
+    font-size: 21px !important;
+  }
+}
