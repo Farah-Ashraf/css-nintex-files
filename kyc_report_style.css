@@ -115,11 +115,25 @@ body{
 
 /* ============================================================
    4. SECTION TITLE LABELS
-   (plain Label controls with no LabelWrap class — e.g.
-   "KYC Requests Overview", "Detailed List of All Requests")
+   ("KYC Requests Overview", "Current Workload by Step",
+   "Average Request Processing Time", "Customer Service
+   Submissions by Agent", "Operations Reviews by Officer",
+   "Detailed List of All Requests" — one title sits directly
+   above each chart or the grid)
+
+   NOTE: K2 only added the LabelWrap class to two of this form's
+   six description labels (Label1, Label3) — Label5, Label7,
+   Label9 and Label11 are descriptions too but lack that class.
+   So title vs. description is targeted here by the label's own
+   name rather than by LabelWrap, which isn't reliably present.
    ============================================================ */
 
-.form span.SourceCode-Forms-Controls-Web-Label:not(.LabelWrap){
+.form span[name="Label"],
+.form span[name="Label2"],
+.form span[name="Label4"],
+.form span[name="Label6"],
+.form span[name="Label8"],
+.form span[name="Label10"]{
   display:block !important;
   color:var(--navy) !important;
   font-size:15px !important;
@@ -133,11 +147,16 @@ body{
 
 /* ============================================================
    5. SECTION DESCRIPTION LABELS
-   (Label controls WITH the LabelWrap class — the explanatory
-   sentence under each section title)
+   (the explanatory sentence under each section title, above
+   that section's chart(s) or grid)
    ============================================================ */
 
-.form span.SourceCode-Forms-Controls-Web-Label.LabelWrap{
+.form span[name="Label1"],
+.form span[name="Label3"],
+.form span[name="Label5"],
+.form span[name="Label7"],
+.form span[name="Label9"],
+.form span[name="Label11"]{
   display:block !important;
   color:var(--text-secondary) !important;
   font-size:12.5px !important;
