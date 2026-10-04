@@ -1,0 +1,404 @@
+/* ============================================================
+   KYC_REPORT_FORM — "STERLING" DASHBOARD THEME
+   K2 / Nintex SmartForms + Telerik Reporting controls
+
+   Scoped to .form
+   Same flat navy/bronze language as the other Sterling forms,
+   rebuilt for THIS form's actual content: section title/description
+   label pairs, chart cards, and the Telerik RadGrid request list.
+   ============================================================ */
+
+
+/* ============================================================
+   0. VARIABLES
+   ============================================================ */
+
+.form{
+  --bg-page:#F2F3F5;
+
+  --navy:#122341;
+  --navy-2:#1B3054;
+  --navy-deep:#0C1B33;
+
+  --bronze:#A9812E;
+  --bronze-soft:#F4EBD8;
+  --bronze-border:#DFC98B;
+
+  --steel:#4C6FA5;
+  --slate:#5A6272;
+  --teal:#1E6E45;
+  --amber:#8A6116;
+
+  --surface-card:#FFFFFF;
+  --surface-tile:#F7F8FA;
+
+  --text-primary:#1A2331;
+  --text-secondary:#525C6B;
+  --text-muted:#7A8393;
+
+  --border:#DEE1E7;
+  --border-hover:#C3C9D4;
+
+  --shadow-card:
+    0 1px 2px rgba(18,24,36,.04),
+    0 6px 18px rgba(18,24,36,.05);
+
+  --shadow-card-hover:
+    0 2px 4px rgba(18,24,36,.05),
+    0 10px 24px rgba(18,24,36,.08);
+
+  --radius-card:8px;
+  --transition-fast:.15s ease;
+
+  /* feeds the inline SVG icons used by the Telerik grid/pager,
+     which already read their color from these custom properties */
+  --reporting-icon-base-color:var(--navy);
+  --reporting-icon-base-secondary-color:#C7CEDB;
+  --reporting-icon-accent-color:var(--bronze);
+  --toolbar-button-icon-base-color:var(--navy);
+  --toolbar-button-icon-base-secondary-color:#C7CEDB;
+
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   1. FONT
+   ============================================================ */
+
+.form,
+.form span,
+.form div,
+.form td,
+.form th,
+.form a,
+.form label{
+  font-family:
+    "IBM Plex Sans",
+    "Segoe UI",
+    Arial,
+    sans-serif !important;
+}
+
+
+/* ============================================================
+   2. PAGE
+   ============================================================ */
+
+body{
+  background:var(--bg-page) !important;
+  background-image:none !important;
+  min-height:100vh !important;
+}
+
+.form{
+  background:transparent !important;
+  background-image:none !important;
+  color:var(--text-primary) !important;
+}
+
+
+/* ============================================================
+   3. ROWS / FORMCONTROLS
+   ============================================================ */
+
+.form .row{
+  margin:0 !important;
+  padding:0 !important;
+}
+
+.form .formcontrol{
+  margin-top:0 !important;
+  margin-bottom:22px !important;
+}
+
+
+/* ============================================================
+   4. SECTION TITLE LABELS
+   ("KYC Requests Overview", "Current Workload by Step",
+   "Average Request Processing Time", "Customer Service
+   Submissions by Agent", "Operations Reviews by Officer",
+   "Detailed List of All Requests" — one title sits directly
+   above each chart or the grid)
+
+   NOTE: K2 only added the LabelWrap class to two of this form's
+   six description labels (Label1, Label3) — Label5, Label7,
+   Label9 and Label11 are descriptions too but lack that class.
+   So title vs. description is targeted here by the label's own
+   name rather than by LabelWrap, which isn't reliably present.
+   ============================================================ */
+
+.form span[name="Label"],
+.form span[name="Label2"],
+.form span[name="Label4"],
+.form span[name="Label6"],
+.form span[name="Label8"],
+.form span[name="Label10"]{
+  display:block !important;
+  color:var(--navy) !important;
+  font-size:15px !important;
+  font-weight:700 !important;
+  letter-spacing:.01em !important;
+  padding-bottom:9px !important;
+  margin-bottom:2px !important;
+  border-bottom:2px solid var(--navy) !important;
+}
+
+
+/* ============================================================
+   5. SECTION DESCRIPTION LABELS
+   (the explanatory sentence under each section title, above
+   that section's chart(s) or grid)
+   ============================================================ */
+
+.form span[name="Label1"],
+.form span[name="Label3"],
+.form span[name="Label5"],
+.form span[name="Label7"],
+.form span[name="Label9"],
+.form span[name="Label11"]{
+  display:block !important;
+  color:var(--text-secondary) !important;
+  font-size:12.5px !important;
+  font-weight:500 !important;
+  line-height:1.55 !important;
+  margin-top:6px !important;
+  max-width:92% !important;
+}
+
+
+/* ============================================================
+   6. CHART CARDS
+   ============================================================ */
+
+.form .StandardChart{
+  display:block !important;
+}
+
+.form .StandardChart .stylewrapper.boxing{
+  background:var(--surface-card) !important;
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-card) !important;
+  box-shadow:var(--shadow-card) !important;
+  transition:box-shadow var(--transition-fast),border-color var(--transition-fast) !important;
+}
+
+.form .StandardChart .stylewrapper.boxing:hover{
+  border-color:var(--border-hover) !important;
+  box-shadow:var(--shadow-card-hover) !important;
+}
+
+.form .header-wrapper{
+  padding-bottom:6px !important;
+  margin-bottom:4px !important;
+  border-bottom:1px solid var(--border) !important;
+}
+
+.form .header-wrapper .charttitle,
+.form .header-wrapper .radhtmlcharttitle{
+  color:var(--navy) !important;
+  font-size:12.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.05em !important;
+}
+
+.form .header-wrapper .chartsubtitle,
+.form .header-wrapper .radhtmlchartsubtitle{
+  color:var(--text-muted) !important;
+  font-size:11px !important;
+  font-weight:500 !important;
+}
+
+/* best-effort recolor of the chart series (pie slices / bars).
+   Telerik assigns each series a class like "series0ActivityInstances",
+   "series1ActivityInstances"... across every chart on this page —
+   this repaints those into the Sterling palette instead of the
+   default orange, and trades the gradient "shine" overlay for a
+   flat fill, consistent with the rest of this theme. */
+.form svg [class*="series0ActivityInstances"]{
+  fill:var(--navy) !important;
+  stroke:var(--navy-deep) !important;
+}
+.form svg [class*="series1ActivityInstances"]{
+  fill:var(--bronze) !important;
+  stroke:#8A6D26 !important;
+}
+.form svg [class*="series2ActivityInstances"]{
+  fill:var(--steel) !important;
+  stroke:#3C5885 !important;
+}
+.form svg [class*="series3ActivityInstances"]{
+  fill:var(--slate) !important;
+  stroke:#454C59 !important;
+}
+.form svg [class*="series4ActivityInstances"]{
+  fill:var(--teal) !important;
+  stroke:#155536 !important;
+}
+.form svg [class*="series5ActivityInstances"]{
+  fill:var(--amber) !important;
+  stroke:#6C4C11 !important;
+}
+.form svg [class*="series6ActivityInstances"],
+.form svg [class*="series7ActivityInstances"],
+.form svg [class*="series8ActivityInstances"],
+.form svg [class*="series9ActivityInstances"]{
+  fill:var(--border-hover) !important;
+  stroke:var(--text-muted) !important;
+}
+
+/* chart text labels / axis labels Telerik renders as SVG <text> */
+.form svg .radchartlabel{
+  fill:var(--text-secondary) !important;
+}
+
+
+/* ============================================================
+   7. "DETAILED LIST OF ALL REQUESTS" GRID (Telerik RadGrid)
+   ============================================================ */
+
+.form .RadGrid{
+  background:var(--surface-card) !important;
+  border:1px solid var(--border) !important;
+  border-radius:var(--radius-card) !important;
+  box-shadow:var(--shadow-card) !important;
+  overflow:hidden !important;
+  padding:4px !important;
+}
+
+.form .report-grid-header-wrapper{
+  padding:12px 10px 8px !important;
+}
+
+.form .UserPerfHeader{
+  color:var(--navy) !important;
+  font-size:13px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.05em !important;
+}
+
+.form .UserPerfSubHeader{
+  color:var(--text-muted) !important;
+  font-size:11.5px !important;
+  margin-top:2px !important;
+}
+
+.form table.rgMasterTable{
+  width:100% !important;
+  border-collapse:collapse !important;
+  font-size:12.5px !important;
+}
+
+.form th.rgHeader{
+  background:var(--navy) !important;
+  color:#FFFFFF !important;
+  font-size:10.5px !important;
+  font-weight:700 !important;
+  text-transform:uppercase !important;
+  letter-spacing:.05em !important;
+  padding:10px 12px !important;
+  border:none !important;
+}
+
+.form tr.rgRow td,
+.form tr.rgAltRow td{
+  padding:10px 12px !important;
+  color:var(--text-primary) !important;
+  border-bottom:1px solid #EEF0F4 !important;
+  vertical-align:middle !important;
+}
+
+.form tr.rgAltRow td{
+  background:var(--surface-tile) !important;
+}
+
+.form tr.rgRow:hover td,
+.form tr.rgAltRow:hover td{
+  background:var(--bronze-soft) !important;
+}
+
+.form tr.rgNoRecords td{
+  padding:28px !important;
+  text-align:center !important;
+  color:var(--text-muted) !important;
+  font-size:12.5px !important;
+}
+
+/* "View Flow" icon button */
+.form .view-flow-wrapper{
+  display:inline-flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  cursor:pointer !important;
+}
+
+.form .view-flow-icon{
+  display:inline-flex !important;
+  padding:5px !important;
+  border-radius:4px !important;
+  transition:background-color var(--transition-fast) !important;
+}
+
+.form .view-flow-icon:hover{
+  background:var(--bronze-soft) !important;
+}
+
+/* pager / footer */
+.form tr.rgPager td{
+  background:var(--surface-tile) !important;
+  padding:10px 12px !important;
+  border-top:1px solid var(--border) !important;
+}
+
+.form .radgrid-divPage,
+.form .pagerPage{
+  color:var(--text-secondary) !important;
+  font-size:12px !important;
+  font-weight:600 !important;
+}
+
+.form .pagerPage{
+  border:1px solid var(--border) !important;
+  border-radius:4px !important;
+  padding:2px 8px !important;
+  background:#FFFFFF !important;
+}
+
+.form .pager-buttongeneric{
+  padding:4px !important;
+  border-radius:4px !important;
+  transition:background-color var(--transition-fast) !important;
+}
+
+.form .pager-buttongeneric:not(.disabled):hover{
+  background:var(--bronze-soft) !important;
+}
+
+.form .pager-buttongeneric.disabled{
+  opacity:.35 !important;
+}
+
+
+/* ============================================================
+   8. SCROLLBAR
+   ============================================================ */
+
+.form ::-webkit-scrollbar{
+  width:7px !important;
+  height:7px !important;
+}
+
+.form ::-webkit-scrollbar-track{
+  background:transparent !important;
+}
+
+.form ::-webkit-scrollbar-thumb{
+  background:#C4CAD5 !important;
+  border-radius:999px !important;
+}
+
+.form ::-webkit-scrollbar-thumb:hover{
+  background:#9AA3B4 !important;
+}
